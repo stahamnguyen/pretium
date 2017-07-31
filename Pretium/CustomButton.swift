@@ -10,13 +10,15 @@ import UIKit
 
 class CustomButton: UIButton {
 
-    init() {
-        super.init(frame: CGRect.zero)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        layer.cornerRadius = 4
+        
+        if AppDelegate.isIPhone5() {
+            titleLabel?.font = titleLabel?.font.withSize(18)
+        } else if AppDelegate.isIPhone6() {
+            titleLabel?.font = titleLabel?.font.withSize(24)
+        }
     }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-
 }
