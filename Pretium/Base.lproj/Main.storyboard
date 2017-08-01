@@ -1,184 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fGg-nm-PCE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Main Screen-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="uqj-Wy-uGh">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainScreen" customModule="Pretium" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="RadialGradientView" customModule="Pretium" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Ypg-3p-YCF">
-                                <rect key="frame" x="75" y="135" width="264" height="561"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YCc-z2-UKx">
-                                        <rect key="frame" x="12.333333333333314" y="0.0" width="239.33333333333337" height="299.33333333333331"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="FSB-Yz-816">
-                                                <rect key="frame" x="10" y="0.0" width="219.33333333333337" height="219.66666666666669"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="FSB-Yz-816" secondAttribute="height" multiplier="1:1" id="X42-6e-7cr"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pretium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="2Wf-HO-HtF">
-                                                <rect key="frame" x="0.0" y="219.66666666666669" width="239.33333333333337" height="79.666666666666629"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="2Wf-HO-HtF" secondAttribute="height" multiplier="3:1" id="jOh-N8-K26"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Didot-Bold" family="Didot" pointSize="48"/>
-                                                <color key="textColor" red="0.98213571310043335" green="0.78581982851028442" blue="0.35627526044845581" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="HYb-0Z-QTc">
-                                        <rect key="frame" x="0.0" y="339.33333333333326" width="264" height="221.66666666666674"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eH-Tz-AdT" customClass="CustomButton" customModule="Pretium" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="264" height="66.000000000000057"/>
-                                                <color key="backgroundColor" red="0.0" green="0.50196078431372548" blue="0.70196078431372544" alpha="0.24831767638036811" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
-                                                <state key="normal" title="Gear Management">
-                                                    <color key="titleColor" red="0.80420029163360596" green="0.8593209981918335" blue="0.88686895370483398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="c0l-f4-HUG" kind="show" id="Byk-nQ-nDF"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-fZ-ZVT" customClass="CustomButton" customModule="Pretium" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="78.000000000000057" width="264" height="65.666666666666629"/>
-                                                <color key="backgroundColor" red="0.0" green="0.50196078431372548" blue="0.70196078431372544" alpha="0.24831767638036811" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
-                                                <state key="normal" title="Calculating">
-                                                    <color key="titleColor" red="0.80420029163360596" green="0.8593209981918335" blue="0.88686895370483398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAh-zp-B5H" customClass="CustomButton" customModule="Pretium" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="155.66666666666669" width="264" height="66"/>
-                                                <color key="backgroundColor" red="0.0" green="0.50196078431372548" blue="0.70196078431372544" alpha="0.24831767638036811" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
-                                                <state key="normal" title="Weather">
-                                                    <color key="titleColor" red="0.80420029163360596" green="0.8593209981918335" blue="0.88686895370483398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="6eH-Tz-AdT" firstAttribute="leading" secondItem="HYb-0Z-QTc" secondAttribute="leading" id="GD1-DR-amZ"/>
-                                            <constraint firstItem="KAh-zp-B5H" firstAttribute="top" secondItem="jFz-fZ-ZVT" secondAttribute="bottom" constant="12" id="LdO-o4-DdG"/>
-                                            <constraint firstItem="6eH-Tz-AdT" firstAttribute="top" secondItem="HYb-0Z-QTc" secondAttribute="top" id="LjI-5v-TD7"/>
-                                            <constraint firstItem="jFz-fZ-ZVT" firstAttribute="leading" secondItem="HYb-0Z-QTc" secondAttribute="leading" id="UNM-N7-LdU"/>
-                                            <constraint firstAttribute="trailing" secondItem="KAh-zp-B5H" secondAttribute="trailing" id="XDw-bX-9Xw"/>
-                                            <constraint firstAttribute="trailing" secondItem="6eH-Tz-AdT" secondAttribute="trailing" id="aFs-uU-0fH"/>
-                                            <constraint firstItem="jFz-fZ-ZVT" firstAttribute="top" secondItem="6eH-Tz-AdT" secondAttribute="bottom" constant="12" id="ceG-pw-XcQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="jFz-fZ-ZVT" secondAttribute="trailing" id="jk2-kc-ef0"/>
-                                            <constraint firstAttribute="bottom" secondItem="KAh-zp-B5H" secondAttribute="bottom" id="vyp-lt-JUj"/>
-                                            <constraint firstItem="KAh-zp-B5H" firstAttribute="leading" secondItem="HYb-0Z-QTc" secondAttribute="leading" id="y2g-SS-2ya"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="HYb-0Z-QTc" firstAttribute="top" secondItem="YCc-z2-UKx" secondAttribute="bottom" constant="40" id="86i-eH-aFP"/>
-                                    <constraint firstItem="HYb-0Z-QTc" firstAttribute="leading" secondItem="Ypg-3p-YCF" secondAttribute="leading" id="Mh4-ut-eiO"/>
-                                    <constraint firstAttribute="bottom" secondItem="HYb-0Z-QTc" secondAttribute="bottom" id="OiX-z1-uDe"/>
-                                    <constraint firstAttribute="trailing" secondItem="HYb-0Z-QTc" secondAttribute="trailing" id="c2A-j3-S6Y"/>
-                                    <constraint firstItem="YCc-z2-UKx" firstAttribute="top" secondItem="Ypg-3p-YCF" secondAttribute="top" id="cnf-XQ-zjr"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.12549019610000001" green="0.19215686269999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Ypg-3p-YCF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="75" id="0Mr-5Q-5sL"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ypg-3p-YCF" secondAttribute="bottom" constant="40" id="D6r-nD-pNU"/>
-                            <constraint firstItem="Ypg-3p-YCF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="115" id="kcd-hf-kTE"/>
-                            <constraint firstAttribute="trailing" secondItem="Ypg-3p-YCF" secondAttribute="trailing" constant="75" id="lcX-hp-qh3"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="insideColor">
-                                <color key="value" red="0.22725325348429654" green="0.31085377837245753" blue="0.41922367544009764" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="outsideColor">
-                                <color key="value" red="0.12549019607843137" green="0.19215686274509802" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewController id="fGg-nm-PCE" customClass="MainScreen" customModule="Pretium" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3T-h5-LXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24.637681159420293" y="35.869565217391305"/>
-        </scene>
-        <!--Gear Management Screen-->
-        <scene sceneID="lfI-uL-1Ti">
-            <objects>
-                <viewController id="uYW-XW-2Hp" customClass="GearManagementScreen" customModule="Pretium" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jB9-8L-bC4"/>
-                        <viewControllerLayoutGuide type="bottom" id="hjz-ey-0S8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GIm-di-8U8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fYH-T4-RWh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.12549019607843137" green="0.19215686274509802" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <items>
-                                    <navigationItem title="Title" id="S1q-8v-cIX"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="kV4-A1-wLf">
-                        <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="HlP-9L-Z44">
-                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Kits"/>
-                                <segment title="Categories"/>
-                            </segments>
-                        </segmentedControl>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wZI-6q-fn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1694.2028985507247" y="37.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Mx2-2w-J5m">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c0l-f4-HUG" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n3P-Ux-VZA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="uYW-XW-2Hp" kind="relationship" relationship="rootViewController" id="HMx-2W-fAX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="82a-Ea-mJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="786.95652173913049" y="37.5"/>
+            <point key="canvasLocation" x="308" y="-117"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logo" width="167" height="167"/>
-    </resources>
 </document>

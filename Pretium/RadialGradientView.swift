@@ -8,11 +8,10 @@
 
 import UIKit
 
-@IBDesignable
 class RadialGradientView: UIView {
 
-    @IBInspectable var insideColor: UIColor = UIColor.clear
-    @IBInspectable var outsideColor: UIColor = UIColor.clear
+    var insideColor: UIColor = UIColor.clear
+    var outsideColor: UIColor = UIColor.clear
     
     override func draw(_ rect: CGRect) {
         let colors = [insideColor.cgColor, outsideColor.cgColor] as CFArray
