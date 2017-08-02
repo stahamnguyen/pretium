@@ -8,9 +8,11 @@
 
 import UIKit
 
-class MainScreen: UIViewController {
+class MainScreenController: UIViewController {
     
     let backgroundView = RadialGradientView()
+    var buttons = [UIButton]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,21 @@ class MainScreen: UIViewController {
         createView()
         createStackViewOfLogoAndBrand()
         createStackViewOfButtons()
+        
+        buttons[0].addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     private func createView() {
@@ -49,6 +66,7 @@ class MainScreen: UIViewController {
             button.setTitle(name, for: .normal)
             button.setTitleColor(Colors.OF_BUTTON_TITLE, for: .normal)
             button.backgroundColor = Colors.OF_BUTTON_BACKGROUND
+            buttons.append(button)
             return button
         }
         
@@ -59,7 +77,7 @@ class MainScreen: UIViewController {
         let stackView = UIStackView(arrangedSubviews: createLogoAndBrand())
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 22
+        stackView.spacing = Screen.HEIGTH * 22 / 736
         stackView.distribution = .fillProportionally
         stackView.alignment = .center
         view.addSubview(stackView)
@@ -77,7 +95,7 @@ class MainScreen: UIViewController {
         let stackView = UIStackView(arrangedSubviews: createButtons(withName: "Gear Management", "Calculating", "Weather"))
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = UIScreen.main.bounds.height * 12 / 736
+        stackView.spacing = Screen.HEIGTH * 12 / 736
         stackView.distribution = .fillEqually
         view.addSubview(stackView)
         
@@ -88,6 +106,13 @@ class MainScreen: UIViewController {
         stackView.heightAnchor.constraint(equalToConstant: Screen.HEIGTH * 295 / 736).isActive = true
         
     }
+    
+    @objc private func buttonClicked(sender: CustomButtonMainScreen!) {
+        let gearManagementController = GearManagementController()
+        navigationController?.pushViewController(gearManagementController, animated: true)
+        print("click")
+    }
+    
 
 }
 

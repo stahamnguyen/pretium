@@ -8,10 +8,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
     </dependencies>
     <scenes>
-        <!--Main Screen-->
+        <!--Main Screen Controller-->
         <scene sceneID="uqj-Wy-uGh">
             <objects>
-                <viewController id="fGg-nm-PCE" customClass="MainScreen" customModule="Pretium" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController id="fGg-nm-PCE" customClass="MainScreenController" customModule="Pretium" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3T-h5-LXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="308" y="-117"/>

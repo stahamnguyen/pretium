@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EBB51C951F2CFDD8008AB300 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51C941F2CFDD8008AB300 /* AppDelegate.swift */; };
-		EBB51C971F2CFDD8008AB300 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51C961F2CFDD8008AB300 /* MainScreen.swift */; };
+		EBB51C971F2CFDD8008AB300 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51C961F2CFDD8008AB300 /* MainScreenController.swift */; };
 		EBB51C9A1F2CFDD8008AB300 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBB51C981F2CFDD8008AB300 /* Main.storyboard */; };
 		EBB51C9D1F2CFDD8008AB300 /* Pretium.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBB51C9B1F2CFDD8008AB300 /* Pretium.xcdatamodeld */; };
 		EBB51C9F1F2CFDD8008AB300 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB51C9E1F2CFDD8008AB300 /* Assets.xcassets */; };
@@ -16,7 +16,7 @@
 		EBB51CAD1F2E69FB008AB300 /* AppDelegateEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CAC1F2E69FB008AB300 /* AppDelegateEx.swift */; };
 		EBB51CB31F2E7A4E008AB300 /* CustomButtonMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB21F2E7A4E008AB300 /* CustomButtonMainScreen.swift */; };
 		EBB51CB71F2FBD22008AB300 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */; };
-		EBB51CB91F2FCB2B008AB300 /* GearManagementScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB81F2FCB2B008AB300 /* GearManagementScreen.swift */; };
+		EBB51CB91F2FCB2B008AB300 /* GearManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB81F2FCB2B008AB300 /* GearManagementController.swift */; };
 		EBB51CBC1F30C8B5008AB300 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CBB1F30C8B5008AB300 /* Constant.swift */; };
 		EBB51CBE1F30E02B008AB300 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CBD1F30E02B008AB300 /* Screen.swift */; };
 /* End PBXBuildFile section */
@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		EBB51C911F2CFDD8008AB300 /* Pretium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pretium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB51C941F2CFDD8008AB300 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBB51C961F2CFDD8008AB300 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		EBB51C961F2CFDD8008AB300 /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		EBB51C991F2CFDD8008AB300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBB51C9C1F2CFDD8008AB300 /* Pretium.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pretium.xcdatamodel; sourceTree = "<group>"; };
 		EBB51C9E1F2CFDD8008AB300 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,7 +33,7 @@
 		EBB51CAC1F2E69FB008AB300 /* AppDelegateEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegateEx.swift; path = ../AppDelegateEx.swift; sourceTree = "<group>"; };
 		EBB51CB21F2E7A4E008AB300 /* CustomButtonMainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonMainScreen.swift; sourceTree = "<group>"; };
 		EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
-		EBB51CB81F2FCB2B008AB300 /* GearManagementScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearManagementScreen.swift; sourceTree = "<group>"; };
+		EBB51CB81F2FCB2B008AB300 /* GearManagementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearManagementController.swift; sourceTree = "<group>"; };
 		EBB51CBB1F30C8B5008AB300 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		EBB51CBD1F30E02B008AB300 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,8 +95,8 @@
 		EBB51CAA1F2E5FC6008AB300 /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				EBB51C961F2CFDD8008AB300 /* MainScreen.swift */,
-				EBB51CB81F2FCB2B008AB300 /* GearManagementScreen.swift */,
+				EBB51C961F2CFDD8008AB300 /* MainScreenController.swift */,
+				EBB51CB81F2FCB2B008AB300 /* GearManagementController.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBB51C971F2CFDD8008AB300 /* MainScreen.swift in Sources */,
+				EBB51C971F2CFDD8008AB300 /* MainScreenController.swift in Sources */,
 				EBB51CBC1F30C8B5008AB300 /* Constant.swift in Sources */,
 				EBB51CB71F2FBD22008AB300 /* RadialGradientView.swift in Sources */,
 				EBB51C951F2CFDD8008AB300 /* AppDelegate.swift in Sources */,
@@ -198,7 +198,7 @@
 				EBB51CBE1F30E02B008AB300 /* Screen.swift in Sources */,
 				EBB51CAD1F2E69FB008AB300 /* AppDelegateEx.swift in Sources */,
 				EBB51CB31F2E7A4E008AB300 /* CustomButtonMainScreen.swift in Sources */,
-				EBB51CB91F2FCB2B008AB300 /* GearManagementScreen.swift in Sources */,
+				EBB51CB91F2FCB2B008AB300 /* GearManagementController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

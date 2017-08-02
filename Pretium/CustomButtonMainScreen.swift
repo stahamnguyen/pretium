@@ -34,4 +34,7 @@ class CustomButtonMainScreen: UIButton {
             titleLabel?.font = titleLabel?.font.withSize(27)
         }
     }
+    
+    
+    
 }

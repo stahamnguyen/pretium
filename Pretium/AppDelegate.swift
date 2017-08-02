@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = MainScreen()
+        let mainScreenController = MainScreenController()
+        
+        window?.rootViewController = UINavigationController(rootViewController: mainScreenController)
         
         application.statusBarStyle = .lightContent
         
