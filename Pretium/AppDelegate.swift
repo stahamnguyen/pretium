@@ -24,9 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = UINavigationController(rootViewController: mainScreenController)
         
+        UINavigationBar.appearance().barTintColor = Colors.OF_OUTER_PART_OF_GRADIENT_BACKGROUND
+        UINavigationBar.appearance().tintColor = Colors.OF_CONTRAST_ITEMS
+        
+        mainScreenController.navigationController?.navigationBar.topItem?.title = ""
+        
         application.statusBarStyle = .lightContent
         
+        
         return true
+    }
+    
+    //Lock rotation
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask(rawValue: UIInterfaceOrientationMask.portrait.rawValue)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

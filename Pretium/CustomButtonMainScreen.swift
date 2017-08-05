@@ -27,7 +27,7 @@ class CustomButtonMainScreen: UIButton {
         titleLabel?.font = UIFont(name: "San Francisco", size: 27)
         
         if AppDelegate.isIPhone5() {
-            titleLabel?.font = titleLabel?.font.withSize(18)
+            titleLabel?.font = titleLabel?.font.withSize(21)
         } else if AppDelegate.isIPhone6() {
             titleLabel?.font = titleLabel?.font.withSize(24)
         } else if AppDelegate.isIPhone6Plus() {

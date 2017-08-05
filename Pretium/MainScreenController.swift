@@ -10,14 +10,13 @@ import UIKit
 
 class MainScreenController: UIViewController {
     
-    let backgroundView = RadialGradientView()
     var buttons = [UIButton]()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createView()
+        createBackground()
         createStackViewOfLogoAndBrand()
         createStackViewOfButtons()
         
@@ -37,8 +36,9 @@ class MainScreenController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    private func createView() {
-        backgroundView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    private func createBackground() {
+        let backgroundView = RadialGradientView()
+        backgroundView.frame = CGRect(x: 0, y: 0, width: Screen.WIDTH, height: Screen.HEIGTH)
         backgroundView.insideColor = Colors.OF_INNER_PART_OF_GRADIENT_BACKGROUND
         backgroundView.outsideColor = Colors.OF_OUTER_PART_OF_GRADIENT_BACKGROUND
         view.addSubview(backgroundView)
