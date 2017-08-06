@@ -12,7 +12,6 @@ class MainScreenController: UIViewController {
     
     var buttons = [UIButton]()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,18 +20,15 @@ class MainScreenController: UIViewController {
         createStackViewOfButtons()
         
         buttons[0].addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -42,7 +38,6 @@ class MainScreenController: UIViewController {
         backgroundView.insideColor = Colors.OF_INNER_PART_OF_GRADIENT_BACKGROUND
         backgroundView.outsideColor = Colors.OF_OUTER_PART_OF_GRADIENT_BACKGROUND
         view.addSubview(backgroundView)
-        
     }
     
     private func createLogoAndBrand() -> [UIView] {
@@ -50,7 +45,6 @@ class MainScreenController: UIViewController {
         let logo = UIImageView(image: UIImage(named: "logo"))
         logo.frame = CGRect(x: 0, y: 0, width: Screen.WIDTH * 165 / 414, height: Screen.HEIGTH * 165 / 736)
         logo.contentMode = .scaleAspectFit
-        
         //Brand
         let brand = UIImageView(image: UIImage(named: "pretium"))
         brand.frame = CGRect(x: 0, y: 0, width: Screen.WIDTH * 267 / 414, height: Screen.HEIGTH * 61 / 736)
@@ -60,16 +54,15 @@ class MainScreenController: UIViewController {
     }
     
     private func createButtons(withName named: String...) -> [UIButton] {
-        return named.map { name in
+        buttons = named.map { name in
             let button = CustomButtonMainScreen()
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setTitle(name, for: .normal)
             button.setTitleColor(Colors.OF_BUTTON_TITLE, for: .normal)
             button.backgroundColor = Colors.OF_BUTTON_BACKGROUND
-            buttons.append(button)
             return button
         }
-        
+        return buttons
     }
     
     private func createStackViewOfLogoAndBrand() {
@@ -87,7 +80,6 @@ class MainScreenController: UIViewController {
         stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: Screen.HEIGTH * 115 / 736).isActive = true
         stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Screen.WIDTH * 73.5 / 414).isActive = true
         stackView.heightAnchor.constraint(equalToConstant: Screen.HEIGTH * 247 / 736).isActive = true
-        
     }
     
     private func createStackViewOfButtons() {
@@ -104,15 +96,11 @@ class MainScreenController: UIViewController {
         stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Screen.HEIGTH * 40 / 736).isActive = true
         stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Screen.WIDTH * 80 / 414).isActive = true
         stackView.heightAnchor.constraint(equalToConstant: Screen.HEIGTH * 295 / 736).isActive = true
-        
     }
     
     @objc private func buttonClicked(sender: CustomButtonMainScreen!) {
         let gearManagementController = GearManagementController()
         navigationController?.pushViewController(gearManagementController, animated: true)
-        print("click")
     }
-    
-
 }
 

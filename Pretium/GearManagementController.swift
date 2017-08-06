@@ -9,6 +9,7 @@
 import UIKit
 
 class GearManagementController: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class GearManagementController: UIViewController {
     
     private func createAddButtonAndSearchButton() {
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.search))
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addGear))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.add))
         let buttons = [addButton, searchButton]
         navigationItem.rightBarButtonItems = buttons
     }
@@ -45,14 +46,11 @@ class GearManagementController: UIViewController {
         
     }
     
-    @objc private func addGear() {
-        if let window = UIApplication.shared.keyWindow {
-            let blackView = UIView()
-            blackView.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.4)
-            window.addSubview(blackView)
-            blackView.frame = window.frame
-        }
+    let addButtonLauncher = AddButtonLauncher()
+    
+    @objc private func add() {
         
+        addButtonLauncher.showAddView()
         
     }
     
