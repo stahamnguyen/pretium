@@ -17,7 +17,6 @@ class GearManagementController: UIViewController {
         createBackground()
         createSegmentedControl(withItems: "Kits", "Categories")
         createAddButtonAndSearchButton()
-        
     }
     
     private func createBackground() {
@@ -28,8 +27,8 @@ class GearManagementController: UIViewController {
     }
     
     private func createSegmentedControl(withItems items: String...) {
-        let segmentedController = CustomSegmentedControl(items: items)
-        segmentedController.frame = CGRect(x: 0, y: 0, width: Screen.WIDTH * 205 / 414, height: Screen.HEIGTH * 25 / 736)
+        let segmentedController = UISegmentedControl(items: items)
+        segmentedController.frame = CGRect(x: 0, y: 0, width: 205 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 25 * Screen.RATIO_WITH_IPHONE_7PLUS)
         segmentedController.selectedSegmentIndex = 0
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: segmentedController)
@@ -46,15 +45,18 @@ class GearManagementController: UIViewController {
         
     }
     
-    let addButtonLauncher = AddButtonLauncher()
-    
     @objc private func add() {
+        let actionSheet = UIAlertController(title: nil, message: "What would you like to add?", preferredStyle: .actionSheet)
         
-        addButtonLauncher.showAddView()
+        actionSheet.addAction(UIAlertAction(title: "Add Gear", style: .default, handler: { action in self.pushToAddGearController()}))
+        actionSheet.addAction(UIAlertAction(title: "Add Kit", style: .default, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
-    
-    
-
+    private func pushToAddGearController() {
+        let addGearController = AddGearController()
+        navigationController?.pushViewController(addGearController, animated: true)
+    }
 }

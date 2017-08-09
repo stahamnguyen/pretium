@@ -43,17 +43,17 @@ class MainScreenController: UIViewController {
     private func createLogoAndBrand() -> [UIView] {
         //Logo
         let logo = UIImageView(image: UIImage(named: "logo"))
-        logo.frame = CGRect(x: 0, y: 0, width: Screen.WIDTH * 165 / 414, height: Screen.HEIGTH * 165 / 736)
+        logo.frame = CGRect(x: 0, y: 0, width: 165 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 165 * Screen.RATIO_WITH_IPHONE_7PLUS)
         logo.contentMode = .scaleAspectFit
         //Brand
         let brand = UIImageView(image: UIImage(named: "pretium"))
-        brand.frame = CGRect(x: 0, y: 0, width: Screen.WIDTH * 267 / 414, height: Screen.HEIGTH * 61 / 736)
+        brand.frame = CGRect(x: 0, y: 0, width: 267 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 61 * Screen.RATIO_WITH_IPHONE_7PLUS)
         brand.contentMode = .scaleAspectFit
         
         return [logo, brand]
     }
     
-    private func createButtons(withName named: String...) -> [UIButton] {
+    open func createButtons(withName named: String...) -> [UIButton] {
         buttons = named.map { name in
             let button = CustomButtonMainScreen()
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -70,16 +70,16 @@ class MainScreenController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: createLogoAndBrand())
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = Screen.HEIGTH * 22 / 736
+        stackView.spacing = 22 * Screen.RATIO_WITH_IPHONE_7PLUS
         stackView.distribution = .fillProportionally
         stackView.alignment = .center
         view.addSubview(stackView)
         
         //Set constraint
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Screen.WIDTH * 73.5 / 414).isActive = true
-        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: Screen.HEIGTH * 115 / 736).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Screen.WIDTH * 73.5 / 414).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: Screen.HEIGTH * 247 / 736).isActive = true
+        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 73.5 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 115 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -73.5 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 247 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
     }
     
     private func createStackViewOfButtons() {
@@ -87,15 +87,15 @@ class MainScreenController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: createButtons(withName: "Gear Management", "Calculating", "Weather"))
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = Screen.HEIGTH * 12 / 736
+        stackView.spacing = 12 * Screen.RATIO_WITH_IPHONE_7PLUS
         stackView.distribution = .fillEqually
         view.addSubview(stackView)
         
         // Set constraint
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Screen.WIDTH * 80 / 414).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Screen.HEIGTH * 40 / 736).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Screen.WIDTH * 80 / 414).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: Screen.HEIGTH * 295 / 736).isActive = true
+        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 80 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -80 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 295 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
     }
     
     @objc private func buttonClicked(sender: CustomButtonMainScreen!) {

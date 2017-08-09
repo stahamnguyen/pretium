@@ -19,4 +19,5 @@ struct Colors {
 struct Screen {
     static let HEIGTH = UIScreen.main.bounds.height
     static let WIDTH = UIScreen.main.bounds.width
+    static let RATIO_WITH_IPHONE_7PLUS = Screen.HEIGTH / 736
 }
