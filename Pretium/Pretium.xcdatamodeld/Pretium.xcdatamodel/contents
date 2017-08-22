@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Gear" representedClassName=".Gear" syncable="YES">
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dateOfPurchase" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Category" representedClassName=".Category" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="haveGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear" inverseName="belongToCategory" inverseEntity="Gear" syncable="YES"/>
+    </entity>
+    <entity name="Gear" representedClassName=".Gear" syncable="YES">
+        <attribute name="dateOfPurchase" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="receipt" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="serialNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="used" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="belongToCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="haveGear" inverseEntity="Category" syncable="YES"/>
         <relationship name="belongToKit" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Kit" inverseName="haveGear" inverseEntity="Kit" syncable="YES"/>
     </entity>
     <entity name="Kit" representedClassName=".Kit" syncable="YES">
@@ -19,7 +22,8 @@
         <relationship name="haveGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear" inverseName="belongToKit" inverseEntity="Gear" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Gear" positionX="-317" positionY="45" width="128" height="208"/>
+        <element name="Category" positionX="-153" positionY="117" width="128" height="75"/>
+        <element name="Gear" positionX="-317" positionY="45" width="128" height="195"/>
         <element name="Kit" positionX="-47" positionY="-31" width="128" height="88"/>
     </elements>
 </model>

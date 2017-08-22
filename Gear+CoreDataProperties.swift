@@ -2,7 +2,7 @@
 //  Gear+CoreDataProperties.swift
 //  Pretium
 //
-//  Created by Staham Nguyen on 05/08/2017.
+//  Created by Staham Nguyen on 21/08/2017.
 //  Copyright © 2017 Staham Nguyen. All rights reserved.
 //
 
@@ -16,16 +16,15 @@ extension Gear {
         return NSFetchRequest<Gear>(entityName: "Gear")
     }
 
-    @NSManaged public var photo: NSObject?
+    @NSManaged public var dateOfPurchase: String?
     @NSManaged public var manufacturer: String?
-    @NSManaged public var name: String?
-    @NSManaged public var category: String?
-    @NSManaged public var serialNumber: Int32
-    @NSManaged public var receipt: NSObject?
-    @NSManaged public var price: Double
-    @NSManaged public var used: Bool
-    @NSManaged public var dateOfPurchase: NSDate?
+    @NSManaged public var model: String?
     @NSManaged public var note: String?
+    @NSManaged public var photo: NSObject?
+    @NSManaged public var price: String?
+    @NSManaged public var serialNumber: String?
+    @NSManaged public var used: Bool
+    @NSManaged public var belongToCategory: Category?
     @NSManaged public var belongToKit: NSSet?
 
 }

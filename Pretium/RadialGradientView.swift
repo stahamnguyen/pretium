@@ -15,7 +15,7 @@ class RadialGradientView: UIView {
     
     override func draw(_ rect: CGRect) {
         let colors = [insideColor.cgColor, outsideColor.cgColor] as CFArray
-        let endRadius = 400 * Screen.RATIO_WITH_IPHONE_7PLUS
+        let endRadius = Create.relativeValueScaledToIphone6Plus(of: 400)
         let gradient = CGGradient(colorsSpace: nil, colors: colors, locations: nil)
         
         UIGraphicsGetCurrentContext()!.drawRadialGradient(gradient!, startCenter: center, startRadius: 0.0, endCenter: center, endRadius: CGFloat(endRadius), options: .drawsAfterEndLocation)

@@ -18,14 +18,23 @@
 		EBB51CB71F2FBD22008AB300 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */; };
 		EBB51CB91F2FCB2B008AB300 /* GearManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB81F2FCB2B008AB300 /* GearManagementController.swift */; };
 		EBB51CBC1F30C8B5008AB300 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CBB1F30C8B5008AB300 /* Constant.swift */; };
-		EBB51CCD1F35BD57008AB300 /* Kit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CC91F35BD57008AB300 /* Kit+CoreDataClass.swift */; };
-		EBB51CCE1F35BD57008AB300 /* Kit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CCA1F35BD57008AB300 /* Kit+CoreDataProperties.swift */; };
-		EBB51CCF1F35BD57008AB300 /* Gear+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CCB1F35BD57008AB300 /* Gear+CoreDataClass.swift */; };
-		EBB51CD01F35BD57008AB300 /* Gear+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CCC1F35BD57008AB300 /* Gear+CoreDataProperties.swift */; };
 		EBB51CFB1F38C581008AB300 /* AddGearController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CFA1F38C581008AB300 /* AddGearController.swift */; };
 		EBB51CFF1F3A21D6008AB300 /* CellInAddGearController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CFE1F3A21D6008AB300 /* CellInAddGearController.swift */; };
-		EBB51D031F3A5F02008AB300 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D021F3A5F02008AB300 /* CustomTextField.swift */; };
-		EBB51D051F3BA11A008AB300 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D041F3BA11A008AB300 /* CustomTextView.swift */; };
+		EBB51D031F3A5F02008AB300 /* CustomPaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D021F3A5F02008AB300 /* CustomPaddingTextField.swift */; };
+		EBB51D071F3CBC91008AB300 /* UIViewControllerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D061F3CBC91008AB300 /* UIViewControllerEx.swift */; };
+		EBB51D091F421A31008AB300 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D081F421A31008AB300 /* StringEx.swift */; };
+		EBB51D0D1F44BD14008AB300 /* CategorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D0C1F44BD14008AB300 /* CategorySelectionViewController.swift */; };
+		EBB51D0F1F44BE00008AB300 /* CellInCategoryControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D0E1F44BE00008AB300 /* CellInCategoryControlller.swift */; };
+		EBB51D121F44E19F008AB300 /* SendDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D111F44E19F008AB300 /* SendDataProtocol.swift */; };
+		EBB51D2B1F4A0FEC008AB300 /* CustomCellInGearManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D2A1F4A0FEC008AB300 /* CustomCellInGearManagementController.swift */; };
+		EBB51D4C1F4B6FD4008AB300 /* Gear+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D461F4B6FD4008AB300 /* Gear+CoreDataClass.swift */; };
+		EBB51D4D1F4B6FD4008AB300 /* Gear+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D471F4B6FD4008AB300 /* Gear+CoreDataProperties.swift */; };
+		EBB51D4E1F4B6FD4008AB300 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D481F4B6FD4008AB300 /* Category+CoreDataClass.swift */; };
+		EBB51D4F1F4B6FD4008AB300 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D491F4B6FD4008AB300 /* Category+CoreDataProperties.swift */; };
+		EBB51D501F4B6FD4008AB300 /* Kit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D4A1F4B6FD4008AB300 /* Kit+CoreDataClass.swift */; };
+		EBB51D511F4B6FD4008AB300 /* Kit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D4B1F4B6FD4008AB300 /* Kit+CoreDataProperties.swift */; };
+		EBB51D531F4C278F008AB300 /* GearInCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D521F4C278F008AB300 /* GearInCategoryController.swift */; };
+		EBB51D551F4C2D2F008AB300 /* CellInGearInCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D541F4C2D2F008AB300 /* CellInGearInCategoryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,14 +51,23 @@
 		EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
 		EBB51CB81F2FCB2B008AB300 /* GearManagementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearManagementController.swift; sourceTree = "<group>"; };
 		EBB51CBB1F30C8B5008AB300 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		EBB51CC91F35BD57008AB300 /* Kit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Kit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EBB51CCA1F35BD57008AB300 /* Kit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Kit+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EBB51CCB1F35BD57008AB300 /* Gear+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gear+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EBB51CCC1F35BD57008AB300 /* Gear+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gear+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EBB51CFA1F38C581008AB300 /* AddGearController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGearController.swift; sourceTree = "<group>"; };
 		EBB51CFE1F3A21D6008AB300 /* CellInAddGearController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInAddGearController.swift; sourceTree = "<group>"; };
-		EBB51D021F3A5F02008AB300 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		EBB51D041F3BA11A008AB300 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		EBB51D021F3A5F02008AB300 /* CustomPaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaddingTextField.swift; sourceTree = "<group>"; };
+		EBB51D061F3CBC91008AB300 /* UIViewControllerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerEx.swift; sourceTree = "<group>"; };
+		EBB51D081F421A31008AB300 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
+		EBB51D0C1F44BD14008AB300 /* CategorySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionViewController.swift; sourceTree = "<group>"; };
+		EBB51D0E1F44BE00008AB300 /* CellInCategoryControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInCategoryControlller.swift; sourceTree = "<group>"; };
+		EBB51D111F44E19F008AB300 /* SendDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDataProtocol.swift; sourceTree = "<group>"; };
+		EBB51D2A1F4A0FEC008AB300 /* CustomCellInGearManagementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellInGearManagementController.swift; sourceTree = "<group>"; };
+		EBB51D461F4B6FD4008AB300 /* Gear+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Gear+CoreDataClass.swift"; path = "../Gear+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB51D471F4B6FD4008AB300 /* Gear+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Gear+CoreDataProperties.swift"; path = "../Gear+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB51D481F4B6FD4008AB300 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataClass.swift"; path = "../Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB51D491F4B6FD4008AB300 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "../Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB51D4A1F4B6FD4008AB300 /* Kit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Kit+CoreDataClass.swift"; path = "../Kit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB51D4B1F4B6FD4008AB300 /* Kit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Kit+CoreDataProperties.swift"; path = "../Kit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB51D521F4C278F008AB300 /* GearInCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearInCategoryController.swift; sourceTree = "<group>"; };
+		EBB51D541F4C2D2F008AB300 /* CellInGearInCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInGearInCategoryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +84,6 @@
 		EBB51C881F2CFDD8008AB300 = {
 			isa = PBXGroup;
 			children = (
-				EBB51CC91F35BD57008AB300 /* Kit+CoreDataClass.swift */,
-				EBB51CCA1F35BD57008AB300 /* Kit+CoreDataProperties.swift */,
-				EBB51CCB1F35BD57008AB300 /* Gear+CoreDataClass.swift */,
-				EBB51CCC1F35BD57008AB300 /* Gear+CoreDataProperties.swift */,
 				EBB51C931F2CFDD8008AB300 /* Pretium */,
 				EBB51C921F2CFDD8008AB300 /* Products */,
 			);
@@ -104,11 +118,13 @@
 		EBB51CA91F2E5FBC008AB300 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EBB51CB21F2E7A4E008AB300 /* CustomButtonMainScreen.swift */,
 				EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */,
+				EBB51CB21F2E7A4E008AB300 /* CustomButtonMainScreen.swift */,
+				EBB51D2A1F4A0FEC008AB300 /* CustomCellInGearManagementController.swift */,
+				EBB51D541F4C2D2F008AB300 /* CellInGearInCategoryController.swift */,
 				EBB51CFE1F3A21D6008AB300 /* CellInAddGearController.swift */,
-				EBB51D021F3A5F02008AB300 /* CustomTextField.swift */,
-				EBB51D041F3BA11A008AB300 /* CustomTextView.swift */,
+				EBB51D021F3A5F02008AB300 /* CustomPaddingTextField.swift */,
+				EBB51D0E1F44BE00008AB300 /* CellInCategoryControlller.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -118,7 +134,9 @@
 			children = (
 				EBB51C961F2CFDD8008AB300 /* MainScreenController.swift */,
 				EBB51CB81F2FCB2B008AB300 /* GearManagementController.swift */,
+				EBB51D521F4C278F008AB300 /* GearInCategoryController.swift */,
 				EBB51CFA1F38C581008AB300 /* AddGearController.swift */,
+				EBB51D0C1F44BD14008AB300 /* CategorySelectionViewController.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -126,6 +144,10 @@
 		EBB51CAB1F2E5FCD008AB300 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EBB51D461F4B6FD4008AB300 /* Gear+CoreDataClass.swift */,
+				EBB51D481F4B6FD4008AB300 /* Category+CoreDataClass.swift */,
+				EBB51D4A1F4B6FD4008AB300 /* Kit+CoreDataClass.swift */,
+				EBB51D131F498BF8008AB300 /* Generated */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -134,8 +156,21 @@
 			isa = PBXGroup;
 			children = (
 				EBB51CBB1F30C8B5008AB300 /* Constant.swift */,
+				EBB51D061F3CBC91008AB300 /* UIViewControllerEx.swift */,
+				EBB51D081F421A31008AB300 /* StringEx.swift */,
+				EBB51D111F44E19F008AB300 /* SendDataProtocol.swift */,
 			);
 			name = Reference;
+			sourceTree = "<group>";
+		};
+		EBB51D131F498BF8008AB300 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				EBB51D471F4B6FD4008AB300 /* Gear+CoreDataProperties.swift */,
+				EBB51D491F4B6FD4008AB300 /* Category+CoreDataProperties.swift */,
+				EBB51D4B1F4B6FD4008AB300 /* Kit+CoreDataProperties.swift */,
+			);
+			name = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,22 +246,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB51D531F4C278F008AB300 /* GearInCategoryController.swift in Sources */,
+				EBB51D121F44E19F008AB300 /* SendDataProtocol.swift in Sources */,
 				EBB51C971F2CFDD8008AB300 /* MainScreenController.swift in Sources */,
-				EBB51CD01F35BD57008AB300 /* Gear+CoreDataProperties.swift in Sources */,
+				EBB51D4D1F4B6FD4008AB300 /* Gear+CoreDataProperties.swift in Sources */,
+				EBB51D0D1F44BD14008AB300 /* CategorySelectionViewController.swift in Sources */,
+				EBB51D091F421A31008AB300 /* StringEx.swift in Sources */,
 				EBB51CBC1F30C8B5008AB300 /* Constant.swift in Sources */,
 				EBB51CFF1F3A21D6008AB300 /* CellInAddGearController.swift in Sources */,
 				EBB51CB71F2FBD22008AB300 /* RadialGradientView.swift in Sources */,
-				EBB51CCD1F35BD57008AB300 /* Kit+CoreDataClass.swift in Sources */,
+				EBB51D4C1F4B6FD4008AB300 /* Gear+CoreDataClass.swift in Sources */,
+				EBB51D501F4B6FD4008AB300 /* Kit+CoreDataClass.swift in Sources */,
+				EBB51D511F4B6FD4008AB300 /* Kit+CoreDataProperties.swift in Sources */,
 				EBB51CFB1F38C581008AB300 /* AddGearController.swift in Sources */,
 				EBB51C951F2CFDD8008AB300 /* AppDelegate.swift in Sources */,
-				EBB51CCF1F35BD57008AB300 /* Gear+CoreDataClass.swift in Sources */,
-				EBB51CCE1F35BD57008AB300 /* Kit+CoreDataProperties.swift in Sources */,
-				EBB51D051F3BA11A008AB300 /* CustomTextView.swift in Sources */,
 				EBB51C9D1F2CFDD8008AB300 /* Pretium.xcdatamodeld in Sources */,
 				EBB51CAD1F2E69FB008AB300 /* AppDelegateEx.swift in Sources */,
+				EBB51D551F4C2D2F008AB300 /* CellInGearInCategoryController.swift in Sources */,
+				EBB51D0F1F44BE00008AB300 /* CellInCategoryControlller.swift in Sources */,
 				EBB51CB31F2E7A4E008AB300 /* CustomButtonMainScreen.swift in Sources */,
+				EBB51D4E1F4B6FD4008AB300 /* Category+CoreDataClass.swift in Sources */,
+				EBB51D4F1F4B6FD4008AB300 /* Category+CoreDataProperties.swift in Sources */,
 				EBB51CB91F2FCB2B008AB300 /* GearManagementController.swift in Sources */,
-				EBB51D031F3A5F02008AB300 /* CustomTextField.swift in Sources */,
+				EBB51D031F3A5F02008AB300 /* CustomPaddingTextField.swift in Sources */,
+				EBB51D2B1F4A0FEC008AB300 /* CustomCellInGearManagementController.swift in Sources */,
+				EBB51D071F3CBC91008AB300 /* UIViewControllerEx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

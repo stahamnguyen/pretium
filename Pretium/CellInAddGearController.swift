@@ -10,9 +10,9 @@ import UIKit
 
 class CellInAddGearController: UITableViewCell {
     
-    let borderWidth: CGFloat = 0.25
+    let borderWidth: CGFloat = 0.5
     
-    var type: TypeOfCell = .normalCell {
+    var type: TypeOfCell = .categoryCell {
         didSet {
             switch type {
             case .manufacturerAndModelCell:
@@ -21,68 +21,128 @@ class CellInAddGearController: UITableViewCell {
                 setupCellWithSwitch()
             case .noteCell:
                 setupNoteCell()
+            case .cellWithTextFieldInTheRight:
+                setupCellWithTextFieldOnTheRight()
+            case .categoryCell:
+                setupCategoryCell()
             default:
-                setupNormalCell()
+                setupBaseCell()
             }
         }
     }
     
     let mainLabel = UILabel()
     let statusLabel = UILabel()
+    let statusTextField = CustomPaddingTextField()
     let usedSwitch = UISwitch()
-    let textView = UITextView()
+    let noteTextView = UITextView()
+    let addPhotoButton = UIButton()
+    let manufacturerTextField = CustomPaddingTextField()
+    let modelTextField = CustomPaddingTextField()
+    let photoOfItemView = UIImageView()
     
-    func setupManufacturerAndModelCell() {
-        let addPhotoButton = UIButton()
-        let manufacturerTextField = CustomTextField()
-        let modelTextField = CustomTextField()
-        
-        addPhotoButton.setTitle("Add \nphoto", for: .normal)
-        addPhotoButton.titleLabel?.textAlignment = .center
-        addPhotoButton.titleLabel?.numberOfLines = 2
-        addPhotoButton.setTitleColor(.blue, for: .normal)
-        addPhotoButton.layer.borderColor = UIColor.gray.cgColor
-        addPhotoButton.layer.borderWidth = borderWidth
-        addPhotoButton.frame = CGRect(x: 0, y: 0, width: 112 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 112 * Screen.RATIO_WITH_IPHONE_7PLUS)
-        addPhotoButton.titleLabel?.font = addPhotoButton.titleLabel?.font.withSize(AppDelegate.fontSize(forIphone5: 16, forIphone6: 18, forIphone6Plus: 20))
-        addSubview(addPhotoButton)
-        
-        manufacturerTextField.placeholder = "Manufacturer"
-        manufacturerTextField.layer.borderWidth = borderWidth
-        manufacturerTextField.layer.borderColor = UIColor.gray.cgColor
-        manufacturerTextField.frame = CGRect(x: 112 * Screen.RATIO_WITH_IPHONE_7PLUS, y: 0, width: Screen.WIDTH - 112 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 56 * Screen.RATIO_WITH_IPHONE_7PLUS)
-        addSubview(manufacturerTextField)
-        
-        modelTextField.placeholder = "Model name"
-        modelTextField.layer.borderWidth = borderWidth
-        modelTextField.layer.borderColor = UIColor.gray.cgColor
-        modelTextField.frame = CGRect(x: 112 * Screen.RATIO_WITH_IPHONE_7PLUS, y: 56 * Screen.RATIO_WITH_IPHONE_7PLUS, width: Screen.WIDTH - 112 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 56 * Screen.RATIO_WITH_IPHONE_7PLUS)
-        addSubview(modelTextField)
+    let titleOfButton = "Add \nphoto"
+    let placeholderArray = ["Manufacturer", "Model name"]
+    let defaultCategory = "Uncategorized"
+    
+    let sizeOfButton: CGFloat = 112
+    
+    //Setup cell functions
+
+    func setupBaseCell() {
+        mainLabel.frame = Create.frameScaledToIphone6Plus(x: 23, y: 17, width: 175, height: 23)
+        mainLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21))
+        addSubview(mainLabel)
     }
     
-    func setupNormalCell() {
-        mainLabel.frame = CGRect(x: 23 * Screen.RATIO_WITH_IPHONE_7PLUS, y: 17 * Screen.RATIO_WITH_IPHONE_7PLUS, width: 180 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 23 * Screen.RATIO_WITH_IPHONE_7PLUS)
-        addSubview(mainLabel)
+    func setupManufacturerAndModelCell() {
+        //Button
+        setupButton(withTitle: titleOfButton, andSize: sizeOfButton)
         
+        //Manufacturer text field
+        setup(textField: manufacturerTextField, withPlaceholder: placeholderArray[0], verticalPoint: 0, andHeight: sizeOfButton / 2)
+        
+        //Model text field
+        setup(textField: modelTextField, withPlaceholder: placeholderArray[1], verticalPoint: sizeOfButton / 2, andHeight: sizeOfButton / 2)
+        
+        //Display photo (hidden in default)
+        setupPhotoView(withPadding: 13)
+    }
+    
+    func setupCategoryCell() {
+        setupBaseCell()
+        
+        statusLabel.frame = Create.frameScaledToIphone6Plus(x: 198, y: 17, width: 170, height: 23)
+        statusLabel.textAlignment = .right
+        statusLabel.textColor = .lightGray
+        statusLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21))
+        statusLabel.text = defaultCategory
+        addSubview(statusLabel)
+        self.accessoryType = .disclosureIndicator
+    }
+    
+    func setupCellWithTextFieldOnTheRight() {
+        setupBaseCell()
+        
+        statusTextField.frame = Create.frameScaledToIphone6Plus(x: 210, y: 17, width: 196, height: 23)
+        statusTextField.textAlignment = .right
+        statusTextField.textColor = .lightGray
+        statusTextField.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21))
+        addSubview(statusTextField)
+        self.selectionStyle = .none
     }
     
     func setupCellWithSwitch() {
-        mainLabel.frame = CGRect(x: 23 * Screen.RATIO_WITH_IPHONE_7PLUS, y: 17 * Screen.RATIO_WITH_IPHONE_7PLUS, width: 180 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 23 * Screen.RATIO_WITH_IPHONE_7PLUS)
-        addSubview(mainLabel)
+        setupBaseCell()
         
-        usedSwitch.frame = CGRect(x: 334 * Screen.RATIO_WITH_IPHONE_7PLUS, y: 8 * Screen.RATIO_WITH_IPHONE_7PLUS, width: 0, height: 0)
+        self.selectionStyle = .none
         addSubview(usedSwitch)
+        
+        usedSwitch.translatesAutoresizingMaskIntoConstraints = false
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[v0]-\(Create.relativeValueScaledToIphone6Plus(of: 23))-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": usedSwitch]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-\(Create.relativeValueScaledToIphone6Plus(of: 8))-[v0]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": usedSwitch]))
     }
     
     func setupNoteCell() {
-        textView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        textView.textContainerInset = UIEdgeInsetsMake(10 * Screen.RATIO_WITH_IPHONE_7PLUS, 18 * Screen.RATIO_WITH_IPHONE_7PLUS, 10 * Screen.RATIO_WITH_IPHONE_7PLUS, 18 * Screen.RATIO_WITH_IPHONE_7PLUS)
-        textView.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 14, forIphone6: 16, forIphone6Plus: 18), weight: UIFontWeightRegular)
-        addSubview(textView)
+        noteTextView.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: self.frame.width / Screen.RATIO_WITH_IPHONE_6PLUS, height: self.frame.height / Screen.RATIO_WITH_IPHONE_6PLUS)
+        noteTextView.textContainerInset = UIEdgeInsetsMake(Create.relativeValueScaledToIphone6Plus(of: 10), Create.relativeValueScaledToIphone6Plus(of: 18), Create.relativeValueScaledToIphone6Plus(of: 10), Create.relativeValueScaledToIphone6Plus(of: 18))
+        noteTextView.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 14, forIphone6: 16, forIphone6Plus: 18), weight: UIFontWeightRegular)
+        addSubview(noteTextView)
     }
     
+    //Setup cell's subviews functions
+    
+    func setupButton(withTitle title: String, andSize size: CGFloat) {
+        addPhotoButton.setTitle(title, for: .normal)
+        addPhotoButton.titleLabel?.textAlignment = .center
+        addPhotoButton.titleLabel?.numberOfLines = 2
+        addPhotoButton.setTitleColor(.blue, for: .normal)
+        addPhotoButton.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: size, height: size)
+        addPhotoButton.titleLabel?.font = addPhotoButton.titleLabel?.font.withSize(AppDelegate.fontSize(forIphone5: 16, forIphone6: 18, forIphone6Plus: 20))
+        addSubview(addPhotoButton)
+    }
+    
+    func setup(textField: CustomPaddingTextField, withPlaceholder placeholder: String, verticalPoint y: CGFloat, andHeight height: CGFloat) {
+        textField.placeholder = placeholder
+        textField.clearButtonMode = .whileEditing
+        textField.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21))
+        textField.frame = Create.frameScaledToIphone6Plus(x: height * 2, y: y, width: Screen.WIDTH_OF_IPHONE_6PLUS - height * 2, height: height)
+        addSubview(textField)
+        
+        let border = CALayer()
+        border.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: borderWidth / Screen.RATIO_WITH_IPHONE_6PLUS, height: sizeOfButton / 2)
+        border.backgroundColor = UIColor.gray.cgColor
+        textField.layer.addSublayer(border)
+    }
+    
+    func setupPhotoView(withPadding padding: CGFloat) {
+        photoOfItemView.contentMode = .scaleAspectFit
+        photoOfItemView.frame = Create.frameScaledToIphone6Plus(x: padding, y: padding, width: sizeOfButton - padding * 2, height: sizeOfButton - padding * 2)
+        photoOfItemView.alpha = 0
+        addSubview(photoOfItemView)
+    }
 }
 
 enum TypeOfCell {
-    case manufacturerAndModelCell, normalCell, cellWithSwitcher, noteCell
+    case manufacturerAndModelCell, categoryCell, cellWithSwitcher, noteCell, baseCell, cellWithTextFieldInTheRight
 }

@@ -34,73 +34,75 @@ class MainScreenController: UIViewController {
     
     private func createBackground() {
         let backgroundView = RadialGradientView()
-        backgroundView.frame = CGRect(x: 0, y: 0, width: Screen.WIDTH, height: Screen.HEIGTH)
+        backgroundView.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: Screen.WIDTH_OF_IPHONE_6PLUS, height: Screen.HEIGHT_OF_IPHONE_6PLUS)
         backgroundView.insideColor = Colors.OF_INNER_PART_OF_GRADIENT_BACKGROUND
         backgroundView.outsideColor = Colors.OF_OUTER_PART_OF_GRADIENT_BACKGROUND
         view.addSubview(backgroundView)
     }
     
+    private func createStackViewOfLogoAndBrand() {
+        let stackView = UIStackView(arrangedSubviews: createLogoAndBrand())
+        generalSetup(forStackView: stackView, withSpacing: 22)
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .center
+        view.addSubview(stackView)
+        
+        setupConstraints(forStackView: stackView, withLeftConstraint: 73.5, rightConstraint: -73.5, topConstraint: 115, bottomConstraint: nil, heightConstraint: 247)
+    }
+    
+    private func createStackViewOfButtons() {
+        let stackView = UIStackView(arrangedSubviews: byCreatingButtons(withName: "Gear Management", "Calculating", "Weather"))
+        generalSetup(forStackView: stackView, withSpacing: 12)
+        stackView.distribution = .fillEqually
+        view.addSubview(stackView)
+        
+        setupConstraints(forStackView: stackView, withLeftConstraint: 80, rightConstraint: -80, topConstraint: nil, bottomConstraint: -40, heightConstraint: 295)
+    }
+    
     private func createLogoAndBrand() -> [UIView] {
-        //Logo
-        let logo = UIImageView(image: UIImage(named: "logo"))
-        logo.frame = CGRect(x: 0, y: 0, width: 165 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 165 * Screen.RATIO_WITH_IPHONE_7PLUS)
-        logo.contentMode = .scaleAspectFit
-        //Brand
-        let brand = UIImageView(image: UIImage(named: "pretium"))
-        brand.frame = CGRect(x: 0, y: 0, width: 267 * Screen.RATIO_WITH_IPHONE_7PLUS, height: 61 * Screen.RATIO_WITH_IPHONE_7PLUS)
-        brand.contentMode = .scaleAspectFit
+        let logo = setupImage(forObject: "logo", withFrameX: 0, y: 0, width: 165, height: 165)
+        let brand = setupImage(forObject: "brand", withFrameX: 0, y: 0, width: 267, height: 61)
         
         return [logo, brand]
     }
     
-    open func createButtons(withName named: String...) -> [UIButton] {
+    private func byCreatingButtons(withName named: String...) -> [UIButton] {
         buttons = named.map { name in
             let button = CustomButtonMainScreen()
-            button.translatesAutoresizingMaskIntoConstraints = false
             button.setTitle(name, for: .normal)
-            button.setTitleColor(Colors.OF_BUTTON_TITLE, for: .normal)
-            button.backgroundColor = Colors.OF_BUTTON_BACKGROUND
             return button
         }
         return buttons
     }
     
-    private func createStackViewOfLogoAndBrand() {
-        //Basic settings
-        let stackView = UIStackView(arrangedSubviews: createLogoAndBrand())
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 22 * Screen.RATIO_WITH_IPHONE_7PLUS
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .center
-        view.addSubview(stackView)
-        
-        //Set constraint
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 73.5 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
-        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 115 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -73.5 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 247 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
+    private func setupImage(forObject object: String, withFrameX x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> UIImageView {
+        let imageObject = UIImageView(image: UIImage(named: object))
+        imageObject.frame = Create.frameScaledToIphone6Plus(x: x, y: y, width: width, height: height)
+        imageObject.contentMode = .scaleAspectFit
+        return imageObject
     }
     
-    private func createStackViewOfButtons() {
-        // Basic settings
-        let stackView = UIStackView(arrangedSubviews: createButtons(withName: "Gear Management", "Calculating", "Weather"))
+    private func generalSetup(forStackView stackView: UIStackView, withSpacing spacing: CGFloat) {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 12 * Screen.RATIO_WITH_IPHONE_7PLUS
-        stackView.distribution = .fillEqually
-        view.addSubview(stackView)
-        
-        // Set constraint
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 80 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -80 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 295 * Screen.RATIO_WITH_IPHONE_7PLUS).isActive = true
+        stackView.spacing = Create.relativeValueScaledToIphone6Plus(of: spacing)
+    }
+    
+    private func setupConstraints(forStackView stackView: UIStackView, withLeftConstraint leftConstraint: CGFloat, rightConstraint: CGFloat, topConstraint: CGFloat?, bottomConstraint: CGFloat?, heightConstraint: CGFloat) {
+        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Create.relativeValueScaledToIphone6Plus(of: leftConstraint)).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Create.relativeValueScaledToIphone6Plus(of: rightConstraint)).isActive = true
+        if let topConstraint = topConstraint {
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: Create.relativeValueScaledToIphone6Plus(of: topConstraint)).isActive = true
+        }
+        if let bottomConstraint = bottomConstraint {
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Create.relativeValueScaledToIphone6Plus(of: bottomConstraint)).isActive = true
+        }
+        stackView.heightAnchor.constraint(equalToConstant: Create.relativeValueScaledToIphone6Plus(of: heightConstraint)).isActive = true
     }
     
     @objc private func buttonClicked(sender: CustomButtonMainScreen!) {
-        let gearManagementController = GearManagementController()
+        let layout = UICollectionViewFlowLayout()
+        let gearManagementController = GearManagementController(collectionViewLayout: layout)
         navigationController?.pushViewController(gearManagementController, animated: true)
     }
 }
-
