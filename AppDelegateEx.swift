@@ -20,4 +20,12 @@ extension AppDelegate {
             return iPhone6PlusFont
         }
     }
+    
+    class func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
 }

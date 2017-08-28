@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 private let reuseIdentifier = "Cell"
+private let nameOfDefaultCoverImage = "Default"
 
 class GearInCategoryController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     
@@ -30,26 +31,26 @@ class GearInCategoryController: UICollectionViewController, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = category.name
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.OF_CONTRAST_ITEMS]
+        
         collectionView?.backgroundColor = Colors.OF_GRAY_BACKGROUND
         
         //Partly configure cell's padding (layout)
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = padding
-        layout.minimumInteritemSpacing = padding
-        collectionView?.collectionViewLayout = layout
+        partlySetupLayout(withPadding: padding)
         
+        //Fetch data from database
         attempFetch()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
-        self.collectionView!.register(CellInGearInCategoryController.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(CustomCellInGearManagementController.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
-
+    
+    // ---   COLLECTION VIEW SETUP   ---
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let availableGearInCategory = gearFetchedResultsController.fetchedObjects {
             if availableGearInCategory.isEmpty {
+                navigationController?.popViewController(animated: true)
                 return 0
             } else {
                 return availableGearInCategory.count
@@ -59,10 +60,10 @@ class GearInCategoryController: UICollectionViewController, UICollectionViewDele
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CellInGearInCategoryController
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCellInGearManagementController
         if let availableGearInCategory = gearFetchedResultsController.fetchedObjects {
             let gear = availableGearInCategory[indexPath.row]
-            cell.imageView.image = gear.photo as? UIImage
+            cell.imageView.image = gear.photo as? UIImage ?? UIImage(named: nameOfDefaultCoverImage)
             cell.nameLabel.text = gear.model
         }
     
@@ -78,6 +79,22 @@ class GearInCategoryController: UICollectionViewController, UICollectionViewDele
         return UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
     }
     
+    //Push to edit gear controller when touch on gear cell
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let editGearController = ConfigureGearController()
+        editGearController.titleOfViewController = "Edit Gear"
+        editGearController.rightBarButtonTitle = "Save"
+        
+        if let availableGearInCategory = gearFetchedResultsController.fetchedObjects {
+            let selectedGear = availableGearInCategory[indexPath.row]
+            editGearController.isInEditingMode = true
+            editGearController.editedGear = selectedGear
+        }
+        
+        navigationController?.pushViewController(editGearController, animated: true)
+    }
+    
+    // ---   CORE DATA FUNCS   ---
     func attempFetch() {
         let fetchRequest: NSFetchRequest<Gear> = Gear.fetchRequest()
         let nameSort = NSSortDescriptor(key: "model", ascending: true)
@@ -94,6 +111,28 @@ class GearInCategoryController: UICollectionViewController, UICollectionViewDele
         } catch {
             let error = error as NSError
             print("\(error)")
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                collectionView?.insertItems(at: [indexPath])
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                collectionView?.deleteItems(at: [indexPath])
+            }
+        case .update:
+            if let indexPath = indexPath {
+                let cell = collectionView?.cellForItem(at: indexPath) as! CustomCellInGearManagementController
+                let gear = gearFetchedResultsController.object(at: indexPath)
+                cell.imageView.image = gear.photo as? UIImage
+                cell.nameLabel.text = gear.model
+            }
+        case .move:
+            return
         }
     }
 }

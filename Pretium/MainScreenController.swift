@@ -103,6 +103,7 @@ class MainScreenController: UIViewController {
     @objc private func buttonClicked(sender: CustomButtonMainScreen!) {
         let layout = UICollectionViewFlowLayout()
         let gearManagementController = GearManagementController(collectionViewLayout: layout)
+        Current.GEAR_MANAGEMENT_CONTROLLER = gearManagementController
         navigationController?.pushViewController(gearManagementController, animated: true)
     }
 }

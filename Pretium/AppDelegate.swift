@@ -27,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = Colors.OF_OUTER_PART_OF_GRADIENT_BACKGROUND
         UINavigationBar.appearance().tintColor = Colors.OF_CONTRAST_ITEMS
         
-        mainScreenController.navigationController?.navigationBar.topItem?.title = ""
-        
         application.statusBarStyle = .lightContent
         
         

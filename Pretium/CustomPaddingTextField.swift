@@ -41,7 +41,7 @@ class CustomPaddingTextField: UITextField {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
     
-    func createDatePicker() {
+    private func createDatePicker() {
         //Format for picker
         datePicker.datePickerMode = .date
         
@@ -64,7 +64,7 @@ class CustomPaddingTextField: UITextField {
         }
     }
     
-    func donePressed() {
+    @objc private func donePressed() {
         //Format date
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -74,7 +74,7 @@ class CustomPaddingTextField: UITextField {
         self.endEditing(true)
     }
     
-    func configurePriceSetterTextField() {
+    private func configurePriceSetterTextField() {
         self.addTarget(self, action: #selector(priceTextFieldDidChange), for: .editingChanged)
         self.tintColor = .clear
         self.keyboardType = .numberPad
@@ -82,7 +82,7 @@ class CustomPaddingTextField: UITextField {
         setupDefaultValueForPriceSetterInCaseEmptyOrNil()
     }
     
-    func priceTextFieldDidChange() {
+    @objc private func priceTextFieldDidChange() {
         if let amountString = self.text?.currencyInputFormatting() {
             self.text = amountString
         }
@@ -90,7 +90,7 @@ class CustomPaddingTextField: UITextField {
         setupDefaultValueForPriceSetterInCaseEmptyOrNil()
     }
     
-    func setupDefaultValueForPriceSetterInCaseEmptyOrNil() {
+    private func setupDefaultValueForPriceSetterInCaseEmptyOrNil() {
         let initialNumberOfPrice: Double = 0
         let initialNumberOfPriceInString = String(format: "%.2f", [initialNumberOfPrice])
         if ((self.text == nil) || (self.text == "")) {

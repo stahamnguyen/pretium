@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CellInAddGearController: UITableViewCell {
+class CellInConfigureGearController: UITableViewCell {
     
     let borderWidth: CGFloat = 0.5
     
-    var type: TypeOfCell = .categoryCell {
+    var type: TypeOfCellInConfigureGearController = .categoryCell {
         didSet {
             switch type {
             case .manufacturerAndModelCell:
@@ -106,7 +106,7 @@ class CellInAddGearController: UITableViewCell {
     func setupNoteCell() {
         noteTextView.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: self.frame.width / Screen.RATIO_WITH_IPHONE_6PLUS, height: self.frame.height / Screen.RATIO_WITH_IPHONE_6PLUS)
         noteTextView.textContainerInset = UIEdgeInsetsMake(Create.relativeValueScaledToIphone6Plus(of: 10), Create.relativeValueScaledToIphone6Plus(of: 18), Create.relativeValueScaledToIphone6Plus(of: 10), Create.relativeValueScaledToIphone6Plus(of: 18))
-        noteTextView.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 14, forIphone6: 16, forIphone6Plus: 18), weight: UIFontWeightRegular)
+        noteTextView.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21), weight: UIFontWeightRegular)
         addSubview(noteTextView)
     }
     
@@ -143,6 +143,6 @@ class CellInAddGearController: UITableViewCell {
     }
 }
 
-enum TypeOfCell {
+enum TypeOfCellInConfigureGearController {
     case manufacturerAndModelCell, categoryCell, cellWithSwitcher, noteCell, baseCell, cellWithTextFieldInTheRight
 }

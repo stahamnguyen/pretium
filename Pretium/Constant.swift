@@ -37,5 +37,9 @@ struct Create {
     }
 }
 
+struct Current {
+    static var GEAR_MANAGEMENT_CONTROLLER: GearManagementController = GearManagementController()
+}
+
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let context = appDelegate.persistentContainer.viewContext
