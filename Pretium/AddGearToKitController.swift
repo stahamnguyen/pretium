@@ -13,13 +13,13 @@ private let reuseIdentifier = "Cell"
 private let nameOfDefaultCoverImage = "Default"
 private let titleOfRightBarButton = "Done"
 
-private let padding = Create.relativeValueScaledToIphone6Plus(of: 10)
-
 class AddGearToKitController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private var gearFetchedResultsController = NSFetchedResultsController<Gear>()
     var nameOfKit = ""
     var image = UIImage()
+    var isInEditingMode = false
+    var editedKit: Kit? = nil
     private var selectedGears = [Int:Gear]()
 
     override func viewDidLoad() {
@@ -56,6 +56,7 @@ class AddGearToKitController: UICollectionViewController, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCellInGearManagementController
         if let availableGear = gearFetchedResultsController.fetchedObjects {
             let gear = availableGear[indexPath.row]
+            cell.type = .kitCell
             cell.nameLabel.text = gear.model
             cell.imageView.image = gear.photo as? UIImage ?? UIImage(named: nameOfDefaultCoverImage)
             cell.checkMarkView.isHidden = false
@@ -75,7 +76,7 @@ class AddGearToKitController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CustomCellInGearManagementController
         cell.checkMarkView.checked = !cell.checkMarkView.checked
-        cell.layer.borderWidth = cell.checkMarkView.checked ? 2 : 0.5
+        cell.layer.borderWidth = cell.checkMarkView.checked ? 2 : 0
         cell.layer.borderColor = cell.checkMarkView.checked ? UIColor.blue.cgColor : UIColor.black.cgColor
         
         if let availableGear = gearFetchedResultsController.fetchedObjects {
@@ -91,19 +92,27 @@ class AddGearToKitController: UICollectionViewController, UICollectionViewDelega
     // ---   SETUP BUTTON'S FUNC   ---
     
     @objc private func completeAddingGearToKit() {
-        let kit = NSEntityDescription.insertNewObject(forEntityName: "Kit", into: context) as! Kit
-        
-        kit.photo = self.image
-        kit.name = self.nameOfKit
-        
-        for selectedGear in self.selectedGears.values {
-            kit.addToHaveGear(selectedGear)
-            selectedGear.addToBelongToKit(kit)
+        if !isInEditingMode {
+            let kit = NSEntityDescription.insertNewObject(forEntityName: "Kit", into: context) as! Kit
+            
+            kit.photo = self.image
+            kit.name = self.nameOfKit.capitalized
+            
+            for selectedGear in self.selectedGears.values {
+                selectedGear.addToBelongToKit(kit)
+            }
+            
+            AppDelegate.saveContext()
+
+            navigationController?.popToViewController(Current.GEAR_MANAGEMENT_CONTROLLER, animated: true)
+        } else {
+            for selectedGear in self.selectedGears.values {
+                selectedGear.addToBelongToKit(editedKit!)
+                AppDelegate.saveContext()
+            }
+            
+            navigationController?.popViewController(animated: true)
         }
-        
-        AppDelegate.saveContext()
-        
-        navigationController?.popToViewController(Current.GEAR_MANAGEMENT_CONTROLLER, animated: true)
     }
     
     // ---   CORE DATA FUNCS   ---
@@ -111,6 +120,11 @@ class AddGearToKitController: UICollectionViewController, UICollectionViewDelega
     private func attempFetch() {
         let fetchRequest: NSFetchRequest<Gear> = Gear.fetchRequest()
         let nameSort = NSSortDescriptor(key: "model", ascending: true)
+        if isInEditingMode {
+            let predicate = NSPredicate(format: "SUBQUERY(belongToKit, $a, $a CONTAINS %@).@count == 0", editedKit!)
+            fetchRequest.predicate = predicate
+        }
+        
         fetchRequest.sortDescriptors = [nameSort]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.gearFetchedResultsController = fetchedResultsController

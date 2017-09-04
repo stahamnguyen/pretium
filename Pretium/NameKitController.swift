@@ -7,23 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
-class NameKitController: UIViewController, UITextFieldDelegate {
+class NameKitController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var originalNameOfKit = ""
     var image = UIImage()
-    var nextAddGearToKitController = AddGearToKitController()
+    var previousGearInKitControllerIfInEditingMode: GearInCategoryOrKitController? = nil
     private let coverImage = UIImageView()
     private let blurredBackgroundImage = UIImageView()
     let nameTextField = UITextField()
     private var rightBarButton = UIBarButtonItem()
+    private let imagePicker = UIImagePickerController()
     
     var isCustomed = false
+    var isEdited = false
+    var editedKit: Kit? = nil
     
     private let placeholderOfNameTextField = "Name of this kit"
     private let titleOfViewController = "Name"
     private let defaultLeftBarButtonTitle = "Done"
-    private let leftBarButtonTitleAfterCompletingFillingNameTextField = "Next"
+    private let rightBarButtonTitleAfterCompletingFillingNameTextField = "Next"
+    private let rightBarButtonTitleAfterCompletingFillingNameTextFieldInEditingMode = "Save"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +40,17 @@ class NameKitController: UIViewController, UITextFieldDelegate {
         setupBlurredBackgroundImage()
         setupAvatarImage()
         setupNameTextField()
-
+        
+        nameTextField.addTarget(self, action: #selector(disableRightBarButtonIfNameTextFieldIsEmpty), for: .editingChanged)
+        
+        if isEdited {
+            addTapGestureForImageView()
+            imagePicker.delegate = self
+        }
+        
+        if isCustomed {
+            rightBarButton.isEnabled = false
+        }
     }
     
     // ---   SETUP UI   ---
@@ -48,7 +63,7 @@ class NameKitController: UIViewController, UITextFieldDelegate {
     
     private func setupBlurredBackgroundImage() {
         
-        if !isCustomed {
+        if !isCustomed && !isEdited {
             let image = UIImage(named: originalNameOfKit)
             self.image = image!
         }
@@ -79,7 +94,13 @@ class NameKitController: UIViewController, UITextFieldDelegate {
         
         nameTextField.returnKeyType = .done
         nameTextField.attributedPlaceholder = NSAttributedString(string:placeholderOfNameTextField, attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
-        nameTextField.text = originalNameOfKit.capitalized
+        
+        if !isCustomed {
+            nameTextField.text = isEdited ? originalNameOfKit : originalNameOfKit.capitalized
+        } else {
+            nameTextField.text = nil
+        }
+        
         nameTextField.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21))
         nameTextField.textAlignment = .center
         nameTextField.textColor = .white
@@ -100,16 +121,125 @@ class NameKitController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        rightBarButton.title = leftBarButtonTitleAfterCompletingFillingNameTextField
+        rightBarButton.title = isEdited ? rightBarButtonTitleAfterCompletingFillingNameTextFieldInEditingMode : rightBarButtonTitleAfterCompletingFillingNameTextField
     }
     
-    // ---   RIGHT BAR BUTTON FUNS   ---
+    // ---   RIGHT BAR BUTTON FUNCS   ---
     @objc private func rightBarButtonPressed() {
         switch rightBarButton.title! {
-        case leftBarButtonTitleAfterCompletingFillingNameTextField:
-            navigationController?.pushViewController(nextAddGearToKitController, animated: true)
+        case rightBarButtonTitleAfterCompletingFillingNameTextField:
+            pushToAddGearToKitController()
+        case rightBarButtonTitleAfterCompletingFillingNameTextFieldInEditingMode:
+            updateKitDetails()
         default:
             nameTextField.resignFirstResponder()
         }
+    }
+    
+    private func pushToAddGearToKitController() {
+        let layout = UICollectionViewFlowLayout()
+        let addGearToKitController = AddGearToKitController(collectionViewLayout: layout)
+        addGearToKitController.nameOfKit = nameTextField.text!
+        addGearToKitController.image = self.image
+        navigationController?.pushViewController(addGearToKitController, animated: true)
+    }
+    
+    private func updateKitDetails() {
+        previousGearInKitControllerIfInEditingMode?.navigationItem.title = nameTextField.text
+        editedKit?.setValue(nameTextField.text, forKey: "name")
+        editedKit?.setValue(image, forKey: "photo")
+        
+        AppDelegate.saveContext()
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func disableRightBarButtonIfNameTextFieldIsEmpty() {
+        if (self.nameTextField.text ?? "").isEmpty {
+            rightBarButton.isEnabled = false
+        } else {
+            rightBarButton.isEnabled = true
+        }
+    }
+    
+    // ---   COVER IMAGE FUNCS   ---
+    
+    private func addTapGestureForImageView() {
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(showPhotoPickerMenu))
+        singleTap.numberOfTapsRequired = 1
+        coverImage.isUserInteractionEnabled = true
+        coverImage.addGestureRecognizer(singleTap)
+    }
+    
+    // ---   IMAGE PICKER CONTROLLER FUNCS   ---
+    
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //Display chosen image
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.image = chosenImage
+            self.coverImage.image = image
+            self.blurredBackgroundImage.image = image
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func showPhotoPickerMenu() {
+        nameTextField.resignFirstResponder()
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: titleOfPhotoPickerMenu[0],
+                                            style: .default,
+                                            handler: { action in self.takeAPhoto()}))
+        actionSheet.addAction(UIAlertAction(title: titleOfPhotoPickerMenu[1],
+                                            style: .default,
+                                            handler: { action in self.choosePhotoFromLibrary()}))
+        actionSheet.addAction(UIAlertAction(title: titleOfPhotoPickerMenu[3],
+                                            style: .cancel,
+                                            handler: nil))
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    //Action of "Take a photo" selection
+    private func takeAPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .camera
+            imagePicker.cameraCaptureMode = .photo
+            imagePicker.modalPresentationStyle = .fullScreen
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            alertThatThereIsNoCamera()
+        }
+    }
+    
+    //Action of "Choose photo from library" selection
+    private func choosePhotoFromLibrary(){
+        imagePicker.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS]
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    private func alertThatThereIsNoCamera() {
+        let alertVC = UIAlertController(
+            title: titleOfNoCameraAlert,
+            message: messageOfNoCameraAlert,
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: okSelectionTitle,
+            style:.default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        present(
+            alertVC,
+            animated: true,
+            completion: nil)
     }
 }

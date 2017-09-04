@@ -49,13 +49,13 @@ class CellInConfigureGearController: UITableViewCell {
     
     //Setup cell functions
 
-    func setupBaseCell() {
+    private func setupBaseCell() {
         mainLabel.frame = Create.frameScaledToIphone6Plus(x: 23, y: 17, width: 175, height: 23)
         mainLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21))
         addSubview(mainLabel)
     }
     
-    func setupManufacturerAndModelCell() {
+    private func setupManufacturerAndModelCell() {
         //Button
         setupButton(withTitle: titleOfButton, andSize: sizeOfButton)
         
@@ -69,7 +69,7 @@ class CellInConfigureGearController: UITableViewCell {
         setupPhotoView(withPadding: 13)
     }
     
-    func setupCategoryCell() {
+    private func setupCategoryCell() {
         setupBaseCell()
         
         statusLabel.frame = Create.frameScaledToIphone6Plus(x: 198, y: 17, width: 170, height: 23)
@@ -81,7 +81,7 @@ class CellInConfigureGearController: UITableViewCell {
         self.accessoryType = .disclosureIndicator
     }
     
-    func setupCellWithTextFieldOnTheRight() {
+    private func setupCellWithTextFieldOnTheRight() {
         setupBaseCell()
         
         statusTextField.frame = Create.frameScaledToIphone6Plus(x: 210, y: 17, width: 196, height: 23)
@@ -92,7 +92,7 @@ class CellInConfigureGearController: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    func setupCellWithSwitch() {
+    private func setupCellWithSwitch() {
         setupBaseCell()
         
         self.selectionStyle = .none
@@ -103,7 +103,7 @@ class CellInConfigureGearController: UITableViewCell {
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-\(Create.relativeValueScaledToIphone6Plus(of: 8))-[v0]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": usedSwitch]))
     }
     
-    func setupNoteCell() {
+    private func setupNoteCell() {
         noteTextView.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: self.frame.width / Screen.RATIO_WITH_IPHONE_6PLUS, height: self.frame.height / Screen.RATIO_WITH_IPHONE_6PLUS)
         noteTextView.textContainerInset = UIEdgeInsetsMake(Create.relativeValueScaledToIphone6Plus(of: 10), Create.relativeValueScaledToIphone6Plus(of: 18), Create.relativeValueScaledToIphone6Plus(of: 10), Create.relativeValueScaledToIphone6Plus(of: 18))
         noteTextView.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21), weight: UIFontWeightRegular)
@@ -112,7 +112,7 @@ class CellInConfigureGearController: UITableViewCell {
     
     //Setup cell's subviews functions
     
-    func setupButton(withTitle title: String, andSize size: CGFloat) {
+    private func setupButton(withTitle title: String, andSize size: CGFloat) {
         addPhotoButton.setTitle(title, for: .normal)
         addPhotoButton.titleLabel?.textAlignment = .center
         addPhotoButton.titleLabel?.numberOfLines = 2
@@ -122,7 +122,7 @@ class CellInConfigureGearController: UITableViewCell {
         addSubview(addPhotoButton)
     }
     
-    func setup(textField: CustomPaddingTextField, withPlaceholder placeholder: String, verticalPoint y: CGFloat, andHeight height: CGFloat) {
+    private func setup(textField: CustomPaddingTextField, withPlaceholder placeholder: String, verticalPoint y: CGFloat, andHeight height: CGFloat) {
         textField.placeholder = placeholder
         textField.clearButtonMode = .whileEditing
         textField.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21))
@@ -135,7 +135,7 @@ class CellInConfigureGearController: UITableViewCell {
         textField.layer.addSublayer(border)
     }
     
-    func setupPhotoView(withPadding padding: CGFloat) {
+    private func setupPhotoView(withPadding padding: CGFloat) {
         photoOfItemView.contentMode = .scaleAspectFit
         photoOfItemView.frame = Create.frameScaledToIphone6Plus(x: padding, y: padding, width: sizeOfButton - padding * 2, height: sizeOfButton - padding * 2)
         photoOfItemView.alpha = 0

@@ -7,5 +7,6 @@
 //
 
 protocol SendAndReceiveDataDelegate {
-    func handleData(data: String)
+    func handleCategory(withName name: String)
+    func handle(kit: Kit)
 }

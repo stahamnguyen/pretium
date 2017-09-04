@@ -11,6 +11,8 @@ import CoreData
 
 // ---   CONSTANT DECLARATION   ---
 
+private let titleForBackButtonOfAddKitsForGearController = "Gear"
+
 private let cellOfManufacturerAndModel = "1"
 private let cellOfCategory = "2"
 private let cellOfSerialNumber = "3"
@@ -33,11 +35,11 @@ private var titleOfCell: [[String]] {
 
 private let defaultSerialNumberPlaceholder = "000 000 000"
 
-private let titleOfPhotoPickerMenu = ["Take a photo", "Choose from library", "Delete", "Cancel"]
-
-private let titleOfNoCameraAlert = "No Camera"
-private let messageOfNoCameraAlert = "Sorry, this device has no camera"
-private let okSelectionTitle = "OK"
+// These titles and message are also used in NameOfKitController
+let titleOfPhotoPickerMenu = ["Take a photo", "Choose from library", "Delete", "Cancel"]
+let titleOfNoCameraAlert = "No Camera"
+let messageOfNoCameraAlert = "Sorry, this device has no camera"
+let okSelectionTitle = "OK"
 
 private let messageOfAskForDeleteGearConfirmation = "Do you really want to delete this gear?"
 private let titleOfDeleteGearConfirmation = ["Yes, delete this gear", "Cancel"]
@@ -51,9 +53,13 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     var rightBarButtonTitle = "Add"
     
     private var indexPathArray = [IndexPath]()
+    private var assignedKits = [Kit]()
+    private var assignedKitsSortedAlphabetically = [Kit]()
+    private var unassignedKits = [Kit]()
     
     var isInEditingMode = false
     var editedGear: Gear? = nil
+    var numberOfKitHavingGear = 0
     
     private var complementSectionForDeleteGearButton: Int = 0
     
@@ -69,12 +75,18 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     var addPhotoButton = UIButton()
     var photoOfItemView = UIImageView()
     var categoryStatus = UILabel()
-    let imagePicker = UIImagePickerController()
+    private let imagePicker = UIImagePickerController()
     
-    var categoryFetchedResultsController = NSFetchedResultsController<Category>()
+    private var categoryFetchedResultsController = NSFetchedResultsController<Category>()
+    private var linkedKitsFetchedResultsController = NSFetchedResultsController<Kit>()
+    private var unlinkedKitsFetchedResultsController = NSFetchedResultsController<Kit>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Setup title for "Back" button of the AddKitsForGearController
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: titleForBackButtonOfAddKitsForGearController, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
         //Setup title of the view controller and create "Add" button
         navigationItem.title = titleOfViewController
         let addGearButton = UIBarButtonItem(title: rightBarButtonTitle,
@@ -83,9 +95,24 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
                                             action: #selector(completeConfiguringItem))
         navigationItem.rightBarButtonItem = addGearButton
         self.addGearButton = addGearButton
+        
+        attemptFetchUnlinkedKits()
+        if let unlinkedKits = unlinkedKitsFetchedResultsController.fetchedObjects {
+            unlinkedKits.forEach({ kit in
+                unassignedKits.append(kit)
+            })
+        }
 
         if !isInEditingMode {
             disableAddGearButtonIfModelTextFieldIsEmpty()
+        } else {
+            attemptFetchLinkedKits()
+            if let kitsHavingGear = linkedKitsFetchedResultsController.fetchedObjects {
+                kitsHavingGear.forEach({ kit in
+                    assignedKits.append(kit)
+                })
+            }
+            assignedKitsSortedAlphabetically = assignedKits.sorted(by: { $0.name! < $1.name! })
         }
         
         imagePicker.delegate = self
@@ -120,22 +147,24 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     // ---   SETUP TABLE VIEW   ---
     
     //Basic UITableView setup
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if !isInEditingMode {
+            complementSectionForDeleteGearButton = 1
+        }
+        return sectionTitle.count - complementSectionForDeleteGearButton
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
             return titleOfCell[0].count
         case 2:
             return titleOfCell[1].count
+        case 3:
+            return assignedKits.count + 1
         default:
             return 1
         }
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        if !isInEditingMode {
-            complementSectionForDeleteGearButton = 1
-        }
-        return sectionTitle.count - complementSectionForDeleteGearButton
     }
     
     //Setup cells for sections
@@ -193,9 +222,19 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellOfAddToKit, for: indexPath) as! CellInConfigureGearController
             cell.type = .baseCell
-            cell.mainLabel.text = titleOfCell[indexPath.section - 1][indexPath.row]
-            cell.mainLabel.textColor = .blue
-            cell.accessoryType = .disclosureIndicator
+            
+            switch indexPath.row {
+            case assignedKits.count: // Last row in the section, which means "Add to Kit" row
+                cell.mainLabel.text = titleOfCell[indexPath.section - 1][0]
+                cell.mainLabel.textColor = .blue
+                cell.accessoryType = .disclosureIndicator
+            default:
+                let assignedKit = assignedKitsSortedAlphabetically[indexPath.row]
+                cell.mainLabel.text = assignedKit.name
+                cell.mainLabel.textColor = .black
+                cell.accessoryType = .none
+                cell.selectionStyle = .none
+            }
             
             return cell
         
@@ -302,7 +341,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = Colors.OF_GRAY_BACKGROUND
-        view.layer.borderWidth = 0.2
+        view.layer.borderWidth = 0.3
         view.layer.borderColor = UIColor.gray.cgColor
         
         let headerLabel = UILabel(frame: Create.frameScaledToIphone6Plus(x: 23, y: 20, width: tableView.bounds.width / Screen.RATIO_WITH_IPHONE_6PLUS, height: 0))
@@ -325,7 +364,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
         view.backgroundColor = Colors.OF_GRAY_BACKGROUND
         return view
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if (section == 5) {
             return Create.relativeValueScaledToIphone6Plus(of: 35)
@@ -345,6 +384,8 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         switch indexPath.section {
         //"Category" cell
         case 1:
@@ -352,18 +393,47 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
             categorySelectionViewController.delegate = self
             categorySelectionViewController.currentSelection = categoryStatus.text!
             navigationController?.pushViewController(categorySelectionViewController, animated: true)
+            
+        //"Add to Kit" cell
+        case 3:
+            if indexPath.row == assignedKits.count { //Last row in the section, which means the "Add to Kit" row
+                let addKitsForGearController = AddKitsForGearController()
+                addKitsForGearController.editedGear = self.editedGear
+                addKitsForGearController.isInEditingMode = self.isInEditingMode
+                addKitsForGearController.delegate = self
+                addKitsForGearController.assignedKits = self.assignedKits
+                addKitsForGearController.unassignedKits = self.unassignedKits
+                navigationController?.pushViewController(addKitsForGearController, animated: true)
+            }
         
         //"Delete" cell (in Editing Mode only)
         case 5:
-            alertOfDeleteGearConfirmation()
+            alertOfDeleteGearConfirmation(forCellAtIndexPath: indexPath)
             
         default:
             return
         }
     }
     
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if indexPath.section == 3 && indexPath.row != assignedKits.count {
+            return UITableViewCellEditingStyle.delete
+        } else {
+            return UITableViewCellEditingStyle.none
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            unassignedKits.append(assignedKitsSortedAlphabetically[indexPath.row])
+            assignedKitsSortedAlphabetically.remove(at: indexPath.row)
+            assignedKits = assignedKitsSortedAlphabetically
+            tableView.reloadData()
+        }
+    }
+    
     //Text field configuration
-    func disableAddGearButtonIfModelTextFieldIsEmpty(){
+    @objc private func disableAddGearButtonIfModelTextFieldIsEmpty(){
         if (self.modelTextField.text ?? "").isEmpty {
             addGearButton.isEnabled = false
         } else {
@@ -374,7 +444,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     // ---   SETUP BUTTON FUNCS   ---
     
     //Add tap gesture for the image view
-    func addTapGestureForImageView() {
+    private func addTapGestureForImageView() {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(showPhotoPickerMenu))
         singleTap.numberOfTapsRequired = 1
         photoOfItemView.isUserInteractionEnabled = true
@@ -382,7 +452,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     }
     
     //Image picker setup
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //Display chosen image
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
             photoOfItemView.image = chosenImage
@@ -395,7 +465,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
         dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -468,7 +538,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
             completion: nil)
     }
     
-    private func alertOfDeleteGearConfirmation() {
+    private func alertOfDeleteGearConfirmation(forCellAtIndexPath indexPath: IndexPath) {
         let actionSheet = UIAlertController(title: nil,
                                             message: messageOfAskForDeleteGearConfirmation,
                                             preferredStyle: .actionSheet)
@@ -492,7 +562,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     
    // ---   CORE DATA   ---
     
-    func updateGearDetailsToDatabase() {
+    private func updateGearDetailsToDatabase() {
         
         let currentCategory: Category = (editedGear?.belongToCategory)!
         
@@ -509,17 +579,25 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
         editedGear?.setValue(priceTextField.text, forKey: "price")
         editedGear?.setValue(usedSwitch.isOn, forKey: "used")
         editedGear?.setValue(dateOfPurchaseTextField.text, forKey: "dateOfPurchase")
-        editedGear?.setValue(manufacturerTextField.text, forKey: "manufacturer")
+        editedGear?.setValue(noteTextView.text, forKey: "note")
         
         if currentCategory != newCategory {
             if currentCategory.haveGear?.count == 0 {
                 context.delete(currentCategory)
             }
         }
+        
+        if let linkedKitsInReality = linkedKitsFetchedResultsController.fetchedObjects {
+            linkedKitsInReality.forEach({ kit in
+                editedGear?.removeFromBelongToKit(kit)
+            })
+            checkIfAssignedKitsAreNotEmptyThenReallyAddKitFor(editedGear)
+        }
+        
         AppDelegate.saveContext()
     }
     
-    func addGearToDatabaseAndAssignToCategory() {
+    private func addGearToDatabaseAndAssignToCategory() {
         
         attempFetchCategory(withName: categoryStatus.text!)
         
@@ -538,10 +616,20 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
         gear.note = self.noteTextView.text
         gear.dateOfPurchase = self.dateOfPurchaseTextField.text
         
+        checkIfAssignedKitsAreNotEmptyThenReallyAddKitFor(gear)
+        
         AppDelegate.saveContext()
     }
     
-    func attempFetchCategory(withName name: String) {
+    private func checkIfAssignedKitsAreNotEmptyThenReallyAddKitFor(_ gear: Gear?) {
+        if !assignedKitsSortedAlphabetically.isEmpty {
+            assignedKitsSortedAlphabetically.forEach({ kit in
+                gear?.addToBelongToKit(kit)
+            })
+        }
+    }
+    
+    private func attempFetchCategory(withName name: String) {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
         let nameSort = NSSortDescriptor(key: "name", ascending: false)
         let predicate = NSPredicate(format: "name = %@", name)
@@ -559,7 +647,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
         }
     }
     
-    func selectedCategory() -> Category {
+    private func selectedCategory() -> Category {
         var category: Category!
         
         if let availableCategory = categoryFetchedResultsController.fetchedObjects {
@@ -575,7 +663,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     }
     
     
-    func deleteEditedGear() {
+    private func deleteEditedGear() {
         let categoryOfEditedGear: Category = (editedGear?.belongToCategory)!
         
         deleteGear()
@@ -584,20 +672,66 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
         navigationController?.popViewController(animated: true)
     }
     
-    func deleteGear() {
+    private func deleteGear() {
         context.delete(editedGear!)
         AppDelegate.saveContext()
     }
     
-    func ifCategoryOfEditedGearIsEmptyAfterGearDeletionThenDelete(_ category: Category) {
+    private func ifCategoryOfEditedGearIsEmptyAfterGearDeletionThenDelete(_ category: Category) {
         if category.haveGear?.count == 0 {
             context.delete(category)
             AppDelegate.saveContext()
         }
     }
     
-    //Func from protocol to receive data
-    func handleData(data: String) {
-        categoryStatus.text = data
+    private func attemptFetchLinkedKits() {
+        let fetchRequest: NSFetchRequest<Kit> = Kit.fetchRequest()
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        let linkedKitsPredicate = NSPredicate(format: "ANY haveGear = %@", editedGear!)
+        fetchRequest.sortDescriptors = [nameSort]
+        fetchRequest.predicate = linkedKitsPredicate
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        self.linkedKitsFetchedResultsController = controller
+        
+        do {
+            try self.linkedKitsFetchedResultsController.performFetch()
+        } catch {
+            let error = error as NSError
+            print("\(error)")
+        }
+    }
+    
+    private func attemptFetchUnlinkedKits() {
+        let fetchRequest: NSFetchRequest<Kit> = Kit.fetchRequest()
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        if let editedGear = editedGear {
+            let unlinkedKitsPredicate = NSPredicate(format: "SUBQUERY(haveGear, $a, $a CONTAINS %@).@count == 0", editedGear)
+            fetchRequest.predicate = unlinkedKitsPredicate
+        }
+        fetchRequest.sortDescriptors = [nameSort]
+        
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        self.unlinkedKitsFetchedResultsController = controller
+        
+        do {
+            try self.unlinkedKitsFetchedResultsController.performFetch()
+        } catch {
+            let error = error as NSError
+            print("\(error)")
+        }
+    }
+    
+    // ---   DELEGATE   ---
+    func handleCategory(withName name: String) {
+        categoryStatus.text = name
+    }
+    
+    func handle(kit: Kit) {
+        assignedKits.append(kit)
+        assignedKitsSortedAlphabetically = assignedKits.sorted(by: { $0.name! < $1.name! })
+        unassignedKits = unassignedKits.filter { $0 != kit }
+        tableView.reloadData()
     }
 }

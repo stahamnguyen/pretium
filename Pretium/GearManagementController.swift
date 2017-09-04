@@ -14,10 +14,12 @@ private let cellId = "cellId"
 private let messageOfAddNewStuffMenu = "What would you like to add?"
 private let titleOfAddNewStuffMenu = ["New Gear", "New Kit", "Cancel"]
 
-private let textOfEmptyVault = "Your vault is empty. \nStart now by adding your first item."
+private let textOfEmptyGear = "Your vault is empty. \nStart now by adding your first item."
+private let textOfEmptyKit = "You currently have no kits. Let's organize your gears now by creating your first kit."
 private let addGearButtonTitle = "Add Gear"
+private let addKitButtonTitle = "Add Kit"
 
-private let padding = Create.relativeValueScaledToIphone6Plus(of: 10)
+let padding = Create.relativeValueScaledToIphone6Plus(of: 9)
 
 private var previousAmountOfCategory: Int = 0
 private var complementForUnsynchronizationOfCollectionViewAndCoreData: Int = 0
@@ -26,8 +28,10 @@ private var isCategorySelected = true
 
 class GearManagementController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     
-    private var background = UIView()
     private var segmentedController = UISegmentedControl()
+    private var searchBar = UISearchBar()
+    private var searchButton = UIBarButtonItem()
+    private var addButton = UIBarButtonItem()
     private var categoryFetchedResultsController = NSFetchedResultsController<Category>()
     private var kitFetchedResultsController = NSFetchedResultsController<Kit>()
     
@@ -38,10 +42,10 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
         
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.OF_CONTRAST_ITEMS]
         
-        createSegmentedControl(withItems: "Categories", "Kits")
-        createAddButtonAndSearchButton()
+        createBarItem()
+        createSegmentedControlTitleView()
         
-//        createContentInCaseThereIsNoGear()
+        displayEmptyGearOrEmptyKit()
         
         collectionView?.backgroundColor = Colors.OF_GRAY_BACKGROUND
         
@@ -56,74 +60,98 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
     
     
     //Setup view in case there is no gear
-    func createContentInCaseThereIsNoGear() {
-        createBackground()
-        createContent()
+    private func createContentInCaseThereIsNoGear() {
+        createContent(withNameOfImage: "safe", text: textOfEmptyGear, buttonTitle: addGearButtonTitle)
     }
     
-    private func createBackground() {
-        let background = UIView()
-        background.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: Screen.WIDTH_OF_IPHONE_6PLUS, height: Screen.HEIGHT_OF_IPHONE_6PLUS)
-        background.backgroundColor = UIColor.white
-        collectionView?.addSubview(background)
-        self.background = background
+    private func createContentInCaseThereIsNoKit() {
+        createContent(withNameOfImage: "kit", text: textOfEmptyKit, buttonTitle: addKitButtonTitle)
     }
     
-    private func createContent() {
-        createVaultImage()
-        createLabel()
-        createAddGearButton()
+    private func createContent(withNameOfImage name: String, text: String, buttonTitle: String) {
+        createImage(withName: name)
+        createLabel(withText: text)
+        createButton(withTitle: buttonTitle)
     }
     
-    private func createVaultImage() {
-        let emptyVaultImage = UIImageView(image: UIImage(named: "safe"))
-        emptyVaultImage.frame = Create.frameScaledToIphone6Plus(x: 118, y: 205, width: 178, height: 178)
-        self.background.addSubview(emptyVaultImage)
+    private func createImage(withName name: String) {
+        let image = UIImageView(image: UIImage(named: name))
+        image.frame = Create.frameScaledToIphone6Plus(x: 118, y: 205, width: 178, height: 178)
+        collectionView?.addSubview(image)
     }
     
-    private func createLabel() {
-        let emptyVaultLabel = UILabel()
-        emptyVaultLabel.text = textOfEmptyVault
-        emptyVaultLabel.textAlignment = .center
-        emptyVaultLabel.numberOfLines = 2
-        emptyVaultLabel.textColor = .lightGray
-        emptyVaultLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 15, forIphone6: 17, forIphone6Plus: 19))
-        emptyVaultLabel.frame = Create.frameScaledToIphone6Plus(x: 27.5, y: 427, width: 359, height: 50)
-        self.background.addSubview(emptyVaultLabel)
+    private func createLabel(withText text: String) {
+        let label = UILabel()
+        label.text = text
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 15, forIphone6: 17, forIphone6Plus: 19))
+        label.frame = Create.frameScaledToIphone6Plus(x: 27.5, y: 427, width: 359, height: 50)
+        collectionView?.addSubview(label)
     }
     
-    private func createAddGearButton() {
-        let addGearButton = UIButton()
-        addGearButton.titleLabel?.textAlignment = .center
-        addGearButton.setTitle(addGearButtonTitle, for: .normal)
-        addGearButton.setTitleColor(.blue, for: .normal)
-        addGearButton.addTarget(self, action: #selector(pushToConfigureGearController), for: .touchUpInside)
-        addGearButton.titleLabel?.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 20, forIphone6: 22, forIphone6Plus: 24))
-        addGearButton.frame = Create.frameScaledToIphone6Plus(x: 148, y: 495, width: 118, height: 29)
-        self.background.addSubview(addGearButton)
+    private func createButton(withTitle title: String) {
+        let button = UIButton()
+        button.titleLabel?.textAlignment = .center
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        if title == addGearButtonTitle {
+            button.addTarget(self, action: #selector(pushToConfigureGearController), for: .touchUpInside)
+        } else {
+            button.addTarget(self, action: #selector(pushToConfigureKitController), for: .touchUpInside)
+        }
+        button.titleLabel?.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 20, forIphone6: 22, forIphone6Plus: 24))
+        button.frame = Create.frameScaledToIphone6Plus(x: 148, y: 495, width: 118, height: 29)
+        collectionView?.addSubview(button)
     }
     
-    private func createSegmentedControl(withItems items: String...) {
-        let segmentedController = UISegmentedControl(items: items)
-        segmentedController.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: 205, height: 25)
-        segmentedController.selectedSegmentIndex = 0
-        navigationItem.leftItemsSupplementBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: segmentedController)
+    private func displayEmptyGearOrEmptyKit() {
+        attempFetchCategory()
+        attempFetchKit()
         
-        segmentedController.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+        for view in (collectionView?.subviews)! {
+            view.removeFromSuperview()
+        }
         
-        self.segmentedController = segmentedController
+        if let availableCategories = categoryFetchedResultsController.fetchedObjects, let availableKits = kitFetchedResultsController.fetchedObjects {
+            let thereIsGear = availableCategories.count != 0
+            let thereIsKit = availableKits.count != 0
+            
+            if thereIsGear && !thereIsKit && !isCategorySelected {
+                createContentInCaseThereIsNoKit()
+            } else if !thereIsGear && thereIsKit && isCategorySelected {
+                createContentInCaseThereIsNoGear()
+            } else if !thereIsGear && !thereIsKit {
+                createContentInCaseThereIsNoGear() //encourage user to create gear first
+            }
+        }
     }
     
-    private func createAddButtonAndSearchButton() {
+    private func createBarItem() {
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search,
                                            target: self,
                                            action: #selector(self.search))
+        self.searchButton = searchButton
         let addButton = UIBarButtonItem(barButtonSystemItem: .add,
                                         target: self,
                                         action: #selector(self.add))
+        self.addButton = addButton
         let buttons = [addButton, searchButton]
         navigationItem.rightBarButtonItems = buttons
+    }
+    
+    private func createSegmentedControlTitleView() {
+        let segmentedControl = UISegmentedControl(items: ["Category", "Kit"])
+        segmentedControl.frame = Create.frameScaledToIphone6Plus(x: 0, y: 0, width: 235, height: 25)
+        segmentedControl.selectedSegmentIndex = 0
+        
+        let fontSize = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 13, forIphone6: 15, forIphone6Plus: 17))
+        segmentedControl.setTitleTextAttributes([NSFontAttributeName:fontSize], for: .normal)
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+        self.segmentedController = segmentedControl
+        
+        navigationItem.titleView = segmentedControl
     }
     
     
@@ -132,9 +160,17 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
     @objc private func segmentedControlValueChanged() {
         isCategorySelected = !isCategorySelected
         collectionView?.reloadData()
+        displayEmptyGearOrEmptyKit()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: isCategorySelected ? "Category" : "Kit",
+                                                           style: UIBarButtonItemStyle.plain,
+                                                           target: nil,
+                                                           action: nil)
     }
     
     @objc private func search() {
+        let layout = UICollectionViewFlowLayout()
+        let searchGearController = SearchGearController(collectionViewLayout: layout)
+        navigationController?.pushViewController(searchGearController, animated: true)
     }
     
     @objc private func add() {
@@ -160,7 +196,7 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
         navigationController?.pushViewController(configureGearController, animated: true)
     }
     
-    private func pushToConfigureKitController() {
+    @objc private func pushToConfigureKitController() {
         let layout = UICollectionViewFlowLayout()
         let configureKitController = ConfigureKitController(collectionViewLayout: layout)
         navigationController?.pushViewController(configureKitController, animated: true)
@@ -226,19 +262,21 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
         let layout = UICollectionViewFlowLayout()
         if isCategorySelected {
             let category = categoryFetchedResultsController.object(at: indexPath)
-            let gearInCategoryController = GearInCategoryController(collectionViewLayout: layout, category: category)
+            let gearInCategoryController = GearInCategoryOrKitController(collectionViewLayout: layout, category: category, kit: nil)
             navigationController?.pushViewController(gearInCategoryController, animated: true)
         } else {
             let kit = kitFetchedResultsController.object(at: indexPath)
+            let gearInKitController = GearInCategoryOrKitController(collectionViewLayout: layout, category: nil, kit: kit)
+            navigationController?.pushViewController(gearInKitController, animated: true)
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Create.relativeValueScaledToIphone6Plus(of: 192), height: Create.relativeValueScaledToIphone6Plus(of: 227))
     }
     
     //Partly configure cell's padding (layout)
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
     }
     
@@ -246,7 +284,7 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
     //  -------   SETUP CORE DATA FUNCS   --------
     
     
-    func attempFetchCategory() {
+    private func attempFetchCategory() {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
         let nameSort = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [nameSort]
@@ -265,7 +303,7 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
         previousAmountOfCategory = categoryFetchedResultsController.fetchedObjects?.count ?? 0
     }
     
-    func attempFetchKit() {
+    private func attempFetchKit() {
         let fetchRequest: NSFetchRequest<Kit> = Kit.fetchRequest()
         let nameSort = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [nameSort]
@@ -283,23 +321,31 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
     }
     
     // Listen to changes from Core Data to update Collection View
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    internal func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
         switch type {
         case .insert:
-            if let indexPath = newIndexPath {
-                complementForUnsynchronizationOfCollectionViewAndCoreData = 0
-                collectionView?.insertItems(at: [indexPath])
+            displayEmptyGearOrEmptyKit()
+            if (anObject is Category && isCategorySelected) || (anObject is Kit && !isCategorySelected) {
+                if let indexPath = newIndexPath {
+                    self.insertItems(at: indexPath)
+                }
             }
         case .delete:
             if let indexPath = indexPath {
-                let currentAmountOfCategory = categoryFetchedResultsController.fetchedObjects?.count ?? 0
-                if previousAmountOfCategory > currentAmountOfCategory { // Only deleting
-                    complementForUnsynchronizationOfCollectionViewAndCoreData = 0
-                } else { // Deleting then preparing for inserting
-                    complementForUnsynchronizationOfCollectionViewAndCoreData = -1
+                if isCategorySelected {
+                    let currentAmountOfCategory = categoryFetchedResultsController.fetchedObjects?.count ?? 0
+                    if previousAmountOfCategory > currentAmountOfCategory { // Only deleting
+                        complementForUnsynchronizationOfCollectionViewAndCoreData = 0
+                    } else { // Deleting then preparing for inserting
+                        complementForUnsynchronizationOfCollectionViewAndCoreData = -1
+                    }
+                    collectionView?.deleteItems(at: [indexPath])
+                } else if anObject is Kit && !isCategorySelected {
+                    collectionView?.deleteItems(at: [indexPath])
                 }
-                collectionView?.deleteItems(at: [indexPath])
             }
+            displayEmptyGearOrEmptyKit()
         case .update:
             if let indexPath = indexPath {
                 updateCell(at: indexPath)
@@ -312,13 +358,33 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
         }
     }
     
-    func updateCell(at indexPath: IndexPath) {
+    private func insertItems(at indexPath: IndexPath?) {
+        if let indexPath = indexPath {
+            complementForUnsynchronizationOfCollectionViewAndCoreData = 0
+            collectionView?.insertItems(at: [indexPath])
+        }
+    }
+    
+    private func updateCell(at indexPath: IndexPath) {
         if let cell = collectionView?.cellForItem(at: indexPath) as? CustomCellInGearManagementController { //Make sure that the category still exist to have cell at the index path
-            let category = categoryFetchedResultsController.object(at: indexPath)
-            if category.haveGear?.count == 1 {
-                cell.amountLabel.text = "\((category.haveGear?.count)!) item"
+            if isCategorySelected {
+                let category = categoryFetchedResultsController.object(at: indexPath)
+                if category.haveGear?.count == 1 {
+                    cell.amountLabel.text = "\((category.haveGear?.count)!) item"
+                } else {
+                    cell.amountLabel.text = "\((category.haveGear?.count)!) items"
+                }
             } else {
-                cell.amountLabel.text = "\((category.haveGear?.count)!) items"
+                let kit = kitFetchedResultsController.object(at: indexPath)
+                cell.nameLabel.text = kit.name
+                cell.imageView.image = kit.photo as? UIImage
+                if kit.haveGear?.count == 0 {
+                    cell.amountLabel.text = "No item"
+                } else if kit.haveGear?.count == 1 {
+                    cell.amountLabel.text = "\((kit.haveGear?.count)!) item"
+                } else {
+                    cell.amountLabel.text = "\((kit.haveGear?.count)!) items"
+                }
             }
         }
     }

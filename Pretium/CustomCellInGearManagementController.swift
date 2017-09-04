@@ -8,6 +8,10 @@
 
 import UIKit
 
+private let shadowWidth = Create.relativeValueScaledToIphone6Plus(of: 0)
+private let shadowHeight = Create.relativeValueScaledToIphone6Plus(of: 0)
+private let shadowRadius = Create.relativeValueScaledToIphone6Plus(of: 5)
+
 class CustomCellInGearManagementController: UICollectionViewCell {
     
     var imageView = UIImageView()
@@ -34,10 +38,6 @@ class CustomCellInGearManagementController: UICollectionViewCell {
         }
     }
     
-    private let shadowWidth = Create.relativeValueScaledToIphone6Plus(of: 1)
-    private let shadowHeight = Create.relativeValueScaledToIphone6Plus(of: 1)
-    private let shadowRadius = Create.relativeValueScaledToIphone6Plus(of: 2)
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -46,11 +46,10 @@ class CustomCellInGearManagementController: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: shadowWidth, height: shadowHeight)
         layer.shadowRadius = shadowRadius
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.3
+        layer.shadowOpacity = 0.2
         layer.masksToBounds = false
         
         layer.cornerRadius = 4
-        layer.borderWidth = 0.5
         clipsToBounds = false
         
         addSubview(imageView)
@@ -61,7 +60,7 @@ class CustomCellInGearManagementController: UICollectionViewCell {
         addSubview(checkMarkView)
         
         bottomBorderOfImageView.frame = Create.frameScaledToIphone6Plus(x: 0, y: 185.3, width: 192, height: 0.5)
-        bottomBorderOfImageView.backgroundColor = .black
+        bottomBorderOfImageView.backgroundColor = .lightGray
         addSubview(bottomBorderOfImageView)
         
         nameLabel.frame = Create.frameScaledToIphone6Plus(x: 27.5, y: 188, width: 137, height: 21)

@@ -20,6 +20,7 @@ class MainScreenController: UIViewController {
         createStackViewOfButtons()
         
         buttons[0].addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

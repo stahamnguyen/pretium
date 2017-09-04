@@ -14,6 +14,7 @@ struct Colors {
     static let OF_BUTTON_TITLE = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
     static let OF_INNER_PART_OF_GRADIENT_BACKGROUND = UIColor(displayP3Red: 62/255, green: 79/255, blue: 117/255, alpha: 1)
     static let OF_OUTER_PART_OF_GRADIENT_BACKGROUND = UIColor(displayP3Red: 32/255, green: 49/255, blue: 67/255, alpha: 1)
+    static let OF_TEXT_FIELD_OF_SEARCH_BAR = UIColor(displayP3Red: 27/255, green: 44/255, blue: 62/255, alpha: 1)
     static let OF_CONTRAST_ITEMS = UIColor(displayP3Red: 242/255, green: 202/255, blue: 109/255, alpha: 1)
     static let OF_GRAY_BACKGROUND = UIColor(displayP3Red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
 }

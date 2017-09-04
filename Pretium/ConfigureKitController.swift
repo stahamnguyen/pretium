@@ -11,13 +11,13 @@ private let createCustomKitCellId = "2"
 
 import UIKit
 
-class ConfigureKitController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ConfigureKitController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let templateKitTitles = ["LIVE EVENT KIT", "STUDIO KIT", "TRAVEL KIT", "OUTDOOR KIT", "WEDDING KIT"]
     private let titleOfViewController = "Create Kit"
     private let titleOfNameKitControllerBackButton = "Cover"
     
-    private let padding = Create.relativeValueScaledToIphone6Plus(of: 10)
+    private let imagePicker = UIImagePickerController()
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = titleOfViewController
@@ -35,10 +35,14 @@ class ConfigureKitController: UICollectionViewController, UICollectionViewDelega
         //Partly configure cell's padding (layout)
         partlySetupLayout(withPadding: padding)
         
+        imagePicker.delegate = self
+        
         //Register class for cell ID
         collectionView?.register(CellInConfigureKitController.self, forCellWithReuseIdentifier: baseCellId)
         collectionView?.register(CellInConfigureKitController.self, forCellWithReuseIdentifier: createCustomKitCellId)
     }
+    
+    // ---   COLLECTION VIEW SETUP   ---
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return templateKitTitles.count + 1
@@ -71,19 +75,84 @@ class ConfigureKitController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case templateKitTitles.count:
-            return
+            showPhotoPickerMenu()
         default:
             let nameKitController = NameKitController()
-            let layout = UICollectionViewFlowLayout()
-            let nextAddGearToKitController = AddGearToKitController(collectionViewLayout: layout)
-            
             nameKitController.originalNameOfKit = templateKitTitles[indexPath.row]
-            
-            nameKitController.nextAddGearToKitController = nextAddGearToKitController
-            nameKitController.nextAddGearToKitController.nameOfKit = templateKitTitles[indexPath.row]
-            nameKitController.nextAddGearToKitController.image = UIImage(named: templateKitTitles[indexPath.row])!
             
             navigationController?.pushViewController(nameKitController, animated: true)
         }
+    }
+    
+    // ---   IMAGE PICKER CONTROLLER FUNCS   ---
+    
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //Display chosen image
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let nameKitController = NameKitController()
+            nameKitController.isCustomed = true
+            nameKitController.image = chosenImage
+            navigationController?.pushViewController(nameKitController, animated: true)
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func showPhotoPickerMenu() {
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: titleOfPhotoPickerMenu[0],
+                                            style: .default,
+                                            handler: { action in self.takeAPhoto()}))
+        actionSheet.addAction(UIAlertAction(title: titleOfPhotoPickerMenu[1],
+                                            style: .default,
+                                            handler: { action in self.choosePhotoFromLibrary()}))
+        actionSheet.addAction(UIAlertAction(title: titleOfPhotoPickerMenu[3],
+                                            style: .cancel,
+                                            handler: nil))
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    //Action of "Take a photo" selection
+    private func takeAPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .camera
+            imagePicker.cameraCaptureMode = .photo
+            imagePicker.modalPresentationStyle = .fullScreen
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            alertThatThereIsNoCamera()
+        }
+    }
+    
+    //Action of "Choose photo from library" selection
+    private func choosePhotoFromLibrary(){
+        imagePicker.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS]
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    private func alertThatThereIsNoCamera() {
+        let alertVC = UIAlertController(
+            title: titleOfNoCameraAlert,
+            message: messageOfNoCameraAlert,
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: okSelectionTitle,
+            style:.default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        present(
+            alertVC,
+            animated: true,
+            completion: nil)
     }
 }

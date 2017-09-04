@@ -10,9 +10,9 @@ import UIKit
 
 class CustomPaddingTextField: UITextField {
     
-    let defaultDateOfPurchase = "Not set"
+    private let defaultDateOfPurchase = "Not set"
 
-    let padding = UIEdgeInsets(top: 0, left: Create.relativeValueScaledToIphone6Plus(of: 10), bottom: 0, right: Create.relativeValueScaledToIphone6Plus(of: 10));
+    private let padding = UIEdgeInsets(top: 0, left: Create.relativeValueScaledToIphone6Plus(of: 10), bottom: 0, right: Create.relativeValueScaledToIphone6Plus(of: 10));
     
     let datePicker = UIDatePicker()
     

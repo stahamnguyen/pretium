@@ -13,7 +13,7 @@ class RadialGradientView: UIView {
     var insideColor: UIColor = UIColor.clear
     var outsideColor: UIColor = UIColor.clear
     
-    override func draw(_ rect: CGRect) {
+    override internal func draw(_ rect: CGRect) {
         let colors = [insideColor.cgColor, outsideColor.cgColor] as CFArray
         let endRadius = Create.relativeValueScaledToIphone6Plus(of: 400)
         let gradient = CGGradient(colorsSpace: nil, colors: colors, locations: nil)

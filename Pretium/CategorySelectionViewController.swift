@@ -25,6 +25,8 @@ class CategorySelectionViewController: UITableViewController, UINavigationContro
 
     }
     
+    // ---   TABLE VIEW   ---
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -52,7 +54,7 @@ class CategorySelectionViewController: UITableViewController, UINavigationContro
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         let labelOfCell = labelArray[indexPath.row]
-        delegate?.handleData(data: labelOfCell)
+        delegate?.handleCategory(withName: labelOfCell)
         navigationController?.popViewController(animated: true)
     }
 }

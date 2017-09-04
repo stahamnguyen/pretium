@@ -16,11 +16,11 @@ class CellInCategoryController: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        avatarImage.frame = Create.frameScaledToIphone6Plus(x: 23, y: 18, width: 44, height: 44)
+        avatarImage.frame = Create.frameScaledToIphone6Plus(x: 23, y: 13, width: 54, height: 54)
         avatarImage.contentMode = .scaleAspectFit
         addSubview(avatarImage)
         
-        label.frame = Create.frameScaledToIphone6Plus(x: 77, y: 28.5, width: 314, height: 23)
+        label.frame = Create.frameScaledToIphone6Plus(x: 97, y: 28.5, width: 294, height: 23)
         addSubview(label)
     }
     
