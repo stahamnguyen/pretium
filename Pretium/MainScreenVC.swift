@@ -19,7 +19,8 @@ class MainScreenController: UIViewController {
         createStackViewOfLogoAndBrand()
         createStackViewOfButtons()
         
-        buttons[0].addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
+        buttons[0].addTarget(self, action: #selector(self.gearManagementButtonClicked), for: .touchUpInside)
+        buttons[1].addTarget(self, action: #selector(self.calculatingButtonClicked), for: .touchUpInside)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
@@ -101,10 +102,15 @@ class MainScreenController: UIViewController {
         stackView.heightAnchor.constraint(equalToConstant: Create.relativeValueScaledToIphone6Plus(of: heightConstraint)).isActive = true
     }
     
-    @objc private func buttonClicked(sender: CustomButtonMainScreen!) {
+    @objc private func gearManagementButtonClicked() {
         let layout = UICollectionViewFlowLayout()
         let gearManagementController = GearManagementController(collectionViewLayout: layout)
         Current.GEAR_MANAGEMENT_CONTROLLER = gearManagementController
         navigationController?.pushViewController(gearManagementController, animated: true)
+    }
+    
+    @objc private func calculatingButtonClicked() {
+        let calculatingController = CalculatingController()
+        navigationController?.pushViewController(calculatingController, animated: true)
     }
 }

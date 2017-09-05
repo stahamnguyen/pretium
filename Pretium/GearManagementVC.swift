@@ -76,7 +76,7 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
     
     private func createImage(withName name: String) {
         let image = UIImageView(image: UIImage(named: name))
-        image.frame = Create.frameScaledToIphone6Plus(x: 118, y: 205, width: 178, height: 178)
+        image.frame = Create.frameScaledToIphone6Plus(x: 75, y: 119, width: 264, height: 264)
         collectionView?.addSubview(image)
     }
     
@@ -366,7 +366,7 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
     }
     
     private func updateCell(at indexPath: IndexPath) {
-        if let cell = collectionView?.cellForItem(at: indexPath) as? CustomCellInGearManagementController { //Make sure that the category still exist to have cell at the index path
+        if let cell = collectionView?.cellForItem(at: indexPath) as? CustomCellInGearManagementController { //Make sure that the category still exists to have cell at the index path
             if isCategorySelected {
                 let category = categoryFetchedResultsController.object(at: indexPath)
                 if category.haveGear?.count == 1 {

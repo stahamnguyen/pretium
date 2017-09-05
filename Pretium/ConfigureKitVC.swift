@@ -9,13 +9,13 @@
 private let baseCellId = "1"
 private let createCustomKitCellId = "2"
 
+private let templateKitTitles = ["LIVE EVENT KIT", "STUDIO KIT", "TRAVEL KIT", "OUTDOOR KIT", "WEDDING KIT"]
+private let titleOfViewController = "Create Kit"
+private let titleOfNameKitControllerBackButton = "Cover"
+
 import UIKit
 
 class ConfigureKitController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    private let templateKitTitles = ["LIVE EVENT KIT", "STUDIO KIT", "TRAVEL KIT", "OUTDOOR KIT", "WEDDING KIT"]
-    private let titleOfViewController = "Create Kit"
-    private let titleOfNameKitControllerBackButton = "Cover"
     
     private let imagePicker = UIImagePickerController()
     

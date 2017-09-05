@@ -8,11 +8,12 @@
 
 import UIKit
 
+private let titleOfViewController = "Category"
+private let cellId = "cellId"
+private let labelArray = ["Cameras", "Lens", "Gadgets", "Computers", "Data Storage", "Lighting - Flash", "Bags and Cases", "Tripods", "Accessories", "Audio", "Uncategorized"]
+
 class CategorySelectionViewController: UITableViewController, UINavigationControllerDelegate {
     
-    private let titleOfViewController = "Category"
-    private let cellId = "cellId"
-    private let labelArray = ["Cameras", "Lens", "Gadgets", "Computers", "Data Storage", "Lighting - Flash", "Bags and Cases", "Tripods", "Accessories", "Audio", "Uncategorized"]
     var currentSelection: String = "Uncategorized"
     
     var delegate: SendAndReceiveDataDelegate? = nil
