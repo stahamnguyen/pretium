@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB87CFC01F5FF53E00E8E608 /* StackingNDFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFBF1F5FF53E00E8E608 /* StackingNDFilterVC.swift */; };
+		EB87CFC21F600D5F00E8E608 /* FractionStringToFractionFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC11F600D5F00E8E608 /* FractionStringToFractionFloat.swift */; };
+		EB87CFC41F60110500E8E608 /* StackingNdFiltersCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */; };
 		EBB0BD921F51AE450017E570 /* ConfigureKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD911F51AE450017E570 /* ConfigureKitVC.swift */; };
 		EBB0BD941F51B9860017E570 /* CellInConfigureKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD931F51B9860017E570 /* CellInConfigureKitController.swift */; };
 		EBB0BD981F51ED240017E570 /* NameKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD971F51ED240017E570 /* NameKitVC.swift */; };
@@ -48,6 +51,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB87CFBF1F5FF53E00E8E608 /* StackingNDFilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackingNDFilterVC.swift; sourceTree = "<group>"; };
+		EB87CFC11F600D5F00E8E608 /* FractionStringToFractionFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FractionStringToFractionFloat.swift; sourceTree = "<group>"; };
+		EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackingNdFiltersCalculator.swift; sourceTree = "<group>"; };
 		EBB0BD911F51AE450017E570 /* ConfigureKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureKitVC.swift; sourceTree = "<group>"; };
 		EBB0BD931F51B9860017E570 /* CellInConfigureKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInConfigureKitController.swift; sourceTree = "<group>"; };
 		EBB0BD971F51ED240017E570 /* NameKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameKitVC.swift; sourceTree = "<group>"; };
@@ -137,6 +143,7 @@
 			children = (
 				EBB0BDA71F5E98980017E570 /* CalculatingVC.swift */,
 				EBB0BDA91F5EA19F0017E570 /* DepthOfFieldVC.swift */,
+				EB87CFBF1F5FF53E00E8E608 /* StackingNDFilterVC.swift */,
 			);
 			name = Calculating;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				EBB0BDAD1F5F36A90017E570 /* PhotographyParameter.swift */,
+				EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */,
 			);
 			name = Calculating;
 			sourceTree = "<group>";
@@ -229,6 +237,7 @@
 				EBB51D081F421A31008AB300 /* StringEx.swift */,
 				EBB51D111F44E19F008AB300 /* SendAndReceiveDataDelegate.swift */,
 				EBB0BD9D1F5368420017E570 /* UICollectionViewControllerEx.swift */,
+				EB87CFC11F600D5F00E8E608 /* FractionStringToFractionFloat.swift */,
 			);
 			name = Reference;
 			sourceTree = "<group>";
@@ -320,6 +329,7 @@
 				EBB51D121F44E19F008AB300 /* SendAndReceiveDataDelegate.swift in Sources */,
 				EBB51C971F2CFDD8008AB300 /* MainScreenVC.swift in Sources */,
 				EBB51D4D1F4B6FD4008AB300 /* Gear+CoreDataProperties.swift in Sources */,
+				EB87CFC01F5FF53E00E8E608 /* StackingNDFilterVC.swift in Sources */,
 				EBB51D0D1F44BD14008AB300 /* CategorySelectionVC.swift in Sources */,
 				EBB51D091F421A31008AB300 /* StringEx.swift in Sources */,
 				EBB0BDA81F5E98980017E570 /* CalculatingVC.swift in Sources */,
@@ -330,9 +340,11 @@
 				EBB51D4C1F4B6FD4008AB300 /* Gear+CoreDataClass.swift in Sources */,
 				EBB0BDAA1F5EA19F0017E570 /* DepthOfFieldVC.swift in Sources */,
 				EBB0BD9E1F5368420017E570 /* UICollectionViewControllerEx.swift in Sources */,
+				EB87CFC21F600D5F00E8E608 /* FractionStringToFractionFloat.swift in Sources */,
 				EBB0BD921F51AE450017E570 /* ConfigureKitVC.swift in Sources */,
 				EBB51D501F4B6FD4008AB300 /* Kit+CoreDataClass.swift in Sources */,
 				EBB0BDA21F5865530017E570 /* SearchGearVC.swift in Sources */,
+				EB87CFC41F60110500E8E608 /* StackingNdFiltersCalculator.swift in Sources */,
 				EBB51D511F4B6FD4008AB300 /* Kit+CoreDataProperties.swift in Sources */,
 				EBB0BDAE1F5F36A90017E570 /* PhotographyParameter.swift in Sources */,
 				EBB51CFB1F38C581008AB300 /* ConfigureGearVC.swift in Sources */,

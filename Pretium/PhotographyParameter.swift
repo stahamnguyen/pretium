@@ -9,20 +9,20 @@
 import Foundation
 
 class PhotographyParameter {
-    private var sensorType: String
-    private var focalLengthInMillimeter: Double
-    private var aperture: Double
-    private var distanceInMeter: Double
+    private let sensorType: String
+    private let focalLengthInMillimeter: Float
+    private let aperture: Float
+    private let distanceInMeter: Float
     
-    private var depthOfFieldInMeter: Double
-    private var nearDistanceInMeter: Double
-    private var farDistanceInMeter: Double
-    private var hyperfocalInMeter: Double
-    private var inFrontOfSubjectInMeter: Double
-    private var behindSubjectInMeter: Double
-    private let circleOfConfusionInMillimet: Double
+    private let depthOfFieldInMeter: Float
+    private let nearDistanceInMeter: Float
+    private let farDistanceInMeter: Float
+    private let hyperfocalInMeter: Float
+    private let inFrontOfSubjectInMeter: Float
+    private let behindSubjectInMeter: Float
+    private let circleOfConfusionInMillimet: Float
     
-    init(sensorType: String, focalLengthInMillimeter: Double, aperture: Double, distanceInMeter: Double) {
+    init(sensorType: String, focalLengthInMillimeter: Float, aperture: Float, distanceInMeter: Float) {
         self.sensorType = sensorType
         self.focalLengthInMillimeter = focalLengthInMillimeter
         self.aperture = aperture
@@ -47,27 +47,27 @@ class PhotographyParameter {
         self.behindSubjectInMeter = depthOfFieldInMeter * 2 / 3
     }
     
-    func getDepthOfFieldInMeter() -> Double {
+    func getDepthOfFieldInMeter() -> Float {
         return self.depthOfFieldInMeter
     }
     
-    func getNearDistanceInMeter() -> Double {
+    func getNearDistanceInMeter() -> Float {
         return self.nearDistanceInMeter
     }
     
-    func getFarDistanceInMeter() -> Double {
+    func getFarDistanceInMeter() -> Float {
         return self.farDistanceInMeter
     }
     
-    func getHyperfocalDistanceInMeter() -> Double {
+    func getHyperfocalDistanceInMeter() -> Float {
         return self.hyperfocalInMeter
     }
     
-    func getInFrontSubjectInMeter() -> Double {
+    func getInFrontSubjectInMeter() -> Float {
         return self.inFrontOfSubjectInMeter
     }
     
-    func getBehindSubjectInMeter() -> Double {
+    func getBehindSubjectInMeter() -> Float {
         return self.behindSubjectInMeter
     }
 }

@@ -23,7 +23,7 @@ private let titleOfInFrontOfSubject = "In Front of Subject"
 private let titleOfBehindSubject = "Behind Subject"
 
 let selectionsOfSensorPicker = ["35mm Full Frame", "Crop Sensor", "Micro 4/3"]
-let selectionsOfAperturePicker = ["1.0", "1.4", "2.0", "2.8", "4.0", "4.5", "8", "11", "16", "22"]
+private let selectionsOfAperturePicker = ["1.0", "1.4", "2.0", "2.8", "4.0", "4.5", "8", "11", "16", "22"]
 private let selectionsOfUnitPicker = ["m/cm", "ft/in"]
 
 class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
@@ -37,8 +37,8 @@ class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerVi
     private var sensorPicker = UIPickerView()
     private var aperturePicker = UIPickerView()
     private var unitPicker = UIPickerView()
-    private var meterOrFootLabel = UILabel()
-    private var centimeterOrInchLabel = UILabel()
+    private var greaterUnitLabel = UILabel()
+    private var lesserUnitLabel = UILabel()
     
     private var depthOfFieldResult = UILabel()
     private var nearDistanceResult = UILabel()
@@ -103,9 +103,9 @@ class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerVi
     private func createDistanceField() {
         createLabel(withText: titleOfDistanceField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 271, width: 113, height: 35)
         createTextField(withTypeOfTextField: .meterOrFootDistance, x: 158, y: 271, width: 56.5, height: 35)
-        meterOrFootLabel = setupLabel(withText: "m", color: Colors.OF_BUTTON_TITLE, x: 228, y: 271, width: 35, height: 35)
+        greaterUnitLabel = setupLabel(withText: "m", color: Colors.OF_BUTTON_TITLE, x: 228, y: 271, width: 35, height: 35)
         createTextField(withTypeOfTextField: .centimeterOrInchDistance, x: 261.5, y: 271, width: 56.5, height: 35)
-        centimeterOrInchLabel = setupLabel(withText: "cm", color: Colors.OF_BUTTON_TITLE, x: 331.5, y: 271, width: 35, height: 35)
+        lesserUnitLabel = setupLabel(withText: "cm", color: Colors.OF_BUTTON_TITLE, x: 331.5, y: 271, width: 35, height: 35)
     }
     
     private func createOutputFields() {
@@ -243,26 +243,73 @@ class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @objc private func calculateButtonClicked() {
-        if let focalLength = focalLengthTextField.text, let aperture = apertureTextField.text, let meterDistance = meterOrFootDistanceTextField.text, let centimeterDistance = centimeterOrInchDistanceTextField.text {
+        if let focalLength = focalLengthTextField.text, let aperture = apertureTextField.text, let distanceInGreaterUnit = meterOrFootDistanceTextField.text, let distanceInLesserUnit = centimeterOrInchDistanceTextField.text {
             
-            let validMeterDistance = meterDistance == "" ? "0" : meterDistance
-            let validCentimeterDistance = centimeterDistance == "" ? "0" : centimeterDistance
-            let distanceInMeter = Double(validMeterDistance)! + Double(validCentimeterDistance)! / 100
-            let aperture = Double(aperture)!
+            let validDistanceInGreaterUnit = distanceInGreaterUnit == "" ? "0" : distanceInGreaterUnit
+            let validDistanceInLesserUnit = distanceInLesserUnit == "" ? "0" : distanceInLesserUnit
+            
+            var distanceInMeter: Float = 0
+            if unitTextField.text == selectionsOfUnitPicker[1] {
+                distanceInMeter = Float(validDistanceInGreaterUnit)! * 0.3048 + Float(validDistanceInLesserUnit)! * 0.0254
+            } else {
+                distanceInMeter = Float(validDistanceInGreaterUnit)! + Float(validDistanceInLesserUnit)! / 100
+            }
+            
+            let aperture = Float(aperture)!
             
             if focalLength != "" {
-                let validFocalLength = Double(focalLength)!
-                let photographyParameter = PhotographyParameter(sensorType: sensorTextField.text!, focalLengthInMillimeter: validFocalLength, aperture: aperture, distanceInMeter: distanceInMeter)
+                let validFocalLength = Float(focalLength)!
                 
-                depthOfFieldResult.text = "\(photographyParameter.getDepthOfFieldInMeter())"
-                nearDistanceResult.text = "\(photographyParameter.getNearDistanceInMeter())"
-                farDistanceResult.text = "\(photographyParameter.getFarDistanceInMeter())"
-                hyperfocalResult.text = "\(photographyParameter.getHyperfocalDistanceInMeter())"
-                inFrontOfSubject.text = "\(photographyParameter.getInFrontSubjectInMeter())"
-                behindSubject.text = "\(photographyParameter.getBehindSubjectInMeter())"
+                var photographyParameter: PhotographyParameter? = PhotographyParameter(sensorType: sensorTextField.text!, focalLengthInMillimeter: validFocalLength, aperture: aperture, distanceInMeter: distanceInMeter)
+                
+                let depthOfFieldMeasurement = turnAFloatFromMeterIntoMeterAndCentimeterOrFootAndInch(float: photographyParameter!.getDepthOfFieldInMeter())
+                let nearDistanceMeasuremet = turnAFloatFromMeterIntoMeterAndCentimeterOrFootAndInch(float: photographyParameter!.getNearDistanceInMeter())
+                let farDistanceMeasurement = turnAFloatFromMeterIntoMeterAndCentimeterOrFootAndInch(float: photographyParameter!.getFarDistanceInMeter())
+                let hyperfocalMeasurement = turnAFloatFromMeterIntoMeterAndCentimeterOrFootAndInch(float: photographyParameter!.getHyperfocalDistanceInMeter())
+                let inFrontOfSubjectMeasurement = turnAFloatFromMeterIntoMeterAndCentimeterOrFootAndInch(float: photographyParameter!.getInFrontSubjectInMeter())
+                let behindSubjectMeasurement = turnAFloatFromMeterIntoMeterAndCentimeterOrFootAndInch(float: photographyParameter!.getBehindSubjectInMeter())
+                
+                switch unitTextField.text! {
+                case selectionsOfUnitPicker[0]:
+                    depthOfFieldResult.text = depthOfFieldMeasurement["meter"]! + " m " + depthOfFieldMeasurement["centimeter"]! + " cm"
+                    nearDistanceResult.text = nearDistanceMeasuremet["meter"]! + " m " + nearDistanceMeasuremet["centimeter"]! + " cm"
+                    farDistanceResult.text = farDistanceMeasurement["meter"]! + " m " + farDistanceMeasurement["centimeter"]! + " cm"
+                    hyperfocalResult.text = hyperfocalMeasurement["meter"]! + " m " + hyperfocalMeasurement["centimeter"]! + " cm"
+                    inFrontOfSubject.text = inFrontOfSubjectMeasurement["meter"]! + " m " + inFrontOfSubjectMeasurement["centimeter"]! + " cm"
+                    behindSubject.text = behindSubjectMeasurement["meter"]! + " m " + behindSubjectMeasurement["centimeter"]! + " cm"
+                default:
+                    depthOfFieldResult.text = depthOfFieldMeasurement["foot"]! + " ft " + depthOfFieldMeasurement["inch"]! + " in"
+                    nearDistanceResult.text = nearDistanceMeasuremet["foot"]! + " ft " + nearDistanceMeasuremet["inch"]! + " in"
+                    farDistanceResult.text = farDistanceMeasurement["foot"]! + " ft " + farDistanceMeasurement["inch"]! + " in"
+                    hyperfocalResult.text = hyperfocalMeasurement["foot"]! + " ft " + hyperfocalMeasurement["inch"]! + " in"
+                    inFrontOfSubject.text = inFrontOfSubjectMeasurement["foot"]! + " ft " + inFrontOfSubjectMeasurement["inch"]! + " in"
+                    behindSubject.text = behindSubjectMeasurement["foot"]! + " ft " + behindSubjectMeasurement["inch"]! + " in"
+                }
+                
+                photographyParameter = nil
             }
         }
-    } 
+    }
+    
+    private func turnAFloatFromMeterIntoMeterAndCentimeterOrFootAndInch(float: Float) -> [String : String] {
+        let meterPart = floor(float)
+        let meterPartInString = String(format: "%.0f", meterPart)
+        let centimeterPart = float.truncatingRemainder(dividingBy: 1) * 100
+        let centimeterPartInString = String(format: "%.1f", centimeterPart)
+        
+        let floatInFoot = float * 3.28084
+        let footPart = floor(floatInFoot)
+        let footPartInString = String(format: "%.0f", footPart)
+        let inchPart = floatInFoot.truncatingRemainder(dividingBy: 1) * 12
+        let inchPartInString = String(format: "%.1f", inchPart)
+        
+        var lengthDictionary = [String : String]()
+        lengthDictionary["meter"] = meterPartInString
+        lengthDictionary["centimeter"] = centimeterPartInString
+        lengthDictionary["foot"] = footPartInString
+        lengthDictionary["inch"] = inchPartInString
+        return lengthDictionary
+    }
     
     // ---   SETUP PICKER VIEW   ---
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -285,11 +332,11 @@ class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         switch pickerView {
         case self.sensorPicker:
-            attributedString = NSAttributedString(string: selectionsOfSensorPicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_BUTTON_TITLE])
+            attributedString = NSAttributedString(string: selectionsOfSensorPicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS])
         case self.aperturePicker:
-            attributedString = NSAttributedString(string: selectionsOfAperturePicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_BUTTON_TITLE])
+            attributedString = NSAttributedString(string: selectionsOfAperturePicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS])
         default:
-            attributedString = NSAttributedString(string: selectionsOfUnitPicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_BUTTON_TITLE])
+            attributedString = NSAttributedString(string: selectionsOfUnitPicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS])
         }
         
         return attributedString
@@ -303,6 +350,14 @@ class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerVi
             self.apertureTextField.text = selectionsOfAperturePicker[row]
         default:
             self.unitTextField.text = selectionsOfUnitPicker[row]
+            switch selectionsOfUnitPicker[row] {
+            case selectionsOfUnitPicker[0]:
+                greaterUnitLabel.text = "m"
+                lesserUnitLabel.text = "cm"
+            default:
+                greaterUnitLabel.text = "ft"
+                lesserUnitLabel.text = "in"
+            }
         }
     }
 }

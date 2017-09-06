@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let titleOfSelection = ["Stacking ND Filter", "Depth of Field"]
+private let titleOfSelection = ["Stacking ND Filters", "Depth of Field"]
 private let cellId = "cellId"
 private let titleOfController = "Calculating"
 private let defaultTitleOfBackBarButton = "Back"
@@ -68,7 +68,9 @@ class CalculatingController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 1:
-            return
+            let stackingNdFiltersController = StackingNDFiltersController()
+            stackingNdFiltersController.navigationItem.title = titleOfSelection[indexPath.row - 1]
+            navigationController?.pushViewController(stackingNdFiltersController, animated: true)
         case 2:
             let depthOfFieldController = DepthOfFieldController()
             depthOfFieldController.navigationItem.title = titleOfSelection[indexPath.row - 1]

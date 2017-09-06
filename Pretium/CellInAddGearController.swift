@@ -50,7 +50,7 @@ class CellInConfigureGearController: UITableViewCell {
     //Setup cell functions
 
     private func setupBaseCell() {
-        mainLabel.frame = Create.frameScaledToIphone6Plus(x: 23, y: 17, width: 175, height: 23)
+        mainLabel.frame = Create.frameScaledToIphone6Plus(x: 23, y: 17, width: 185, height: 23)
         mainLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 17, forIphone6: 19, forIphone6Plus: 21))
         addSubview(mainLabel)
     }
