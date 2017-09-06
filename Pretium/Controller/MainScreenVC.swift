@@ -21,6 +21,7 @@ class MainScreenController: UIViewController {
         
         buttons[0].addTarget(self, action: #selector(self.gearManagementButtonClicked), for: .touchUpInside)
         buttons[1].addTarget(self, action: #selector(self.calculatingButtonClicked), for: .touchUpInside)
+        buttons[2].addTarget(self, action: #selector(self.weatherButtonClicked), for: .touchUpInside)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
@@ -112,5 +113,10 @@ class MainScreenController: UIViewController {
     @objc private func calculatingButtonClicked() {
         let calculatingController = CalculatingController()
         navigationController?.pushViewController(calculatingController, animated: true)
+    }
+    
+    @objc private func weatherButtonClicked() {
+        let weatherController = WeatherController()
+        navigationController?.pushViewController(weatherController, animated: true)
     }
 }

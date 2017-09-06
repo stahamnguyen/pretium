@@ -17,6 +17,7 @@ struct Colors {
     static let OF_TEXT_FIELD_OF_SEARCH_BAR = UIColor(displayP3Red: 27/255, green: 44/255, blue: 62/255, alpha: 1)
     static let OF_CONTRAST_ITEMS = UIColor(displayP3Red: 242/255, green: 202/255, blue: 109/255, alpha: 1)
     static let OF_GRAY_BACKGROUND = UIColor(displayP3Red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+    static let OF_TABLE_VIEW_IN_WEATHER_VC = UIColor(displayP3Red: 32/255, green: 49/255, blue: 67/255, alpha: 0.1)
 }
 
 struct Screen {

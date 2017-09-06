@@ -10,6 +10,8 @@
 		EB87CFC01F5FF53E00E8E608 /* StackingNDFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFBF1F5FF53E00E8E608 /* StackingNDFilterVC.swift */; };
 		EB87CFC21F600D5F00E8E608 /* FractionStringToFractionFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC11F600D5F00E8E608 /* FractionStringToFractionFloat.swift */; };
 		EB87CFC41F60110500E8E608 /* StackingNdFiltersCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */; };
+		EB87CFC71F60758300E8E608 /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC61F60758300E8E608 /* WeatherVC.swift */; };
+		EB87CFCA1F60911C00E8E608 /* CellInWeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC91F60911C00E8E608 /* CellInWeatherVC.swift */; };
 		EBB0BD921F51AE450017E570 /* ConfigureKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD911F51AE450017E570 /* ConfigureKitVC.swift */; };
 		EBB0BD941F51B9860017E570 /* CellInConfigureKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD931F51B9860017E570 /* CellInConfigureKitController.swift */; };
 		EBB0BD981F51ED240017E570 /* NameKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD971F51ED240017E570 /* NameKitVC.swift */; };
@@ -54,6 +56,8 @@
 		EB87CFBF1F5FF53E00E8E608 /* StackingNDFilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackingNDFilterVC.swift; path = Controller/Calculating/StackingNDFilterVC.swift; sourceTree = "<group>"; };
 		EB87CFC11F600D5F00E8E608 /* FractionStringToFractionFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FractionStringToFractionFloat.swift; sourceTree = "<group>"; };
 		EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackingNdFiltersCalculator.swift; path = Calculating/StackingNdFiltersCalculator.swift; sourceTree = "<group>"; };
+		EB87CFC61F60758300E8E608 /* WeatherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherVC.swift; path = Controller/Weather/WeatherVC.swift; sourceTree = "<group>"; };
+		EB87CFC91F60911C00E8E608 /* CellInWeatherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInWeatherVC.swift; path = View/Weather/CellInWeatherVC.swift; sourceTree = "<group>"; };
 		EBB0BD911F51AE450017E570 /* ConfigureKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigureKitVC.swift; path = "Controller/Gear Management/ConfigureKitVC.swift"; sourceTree = "<group>"; };
 		EBB0BD931F51B9860017E570 /* CellInConfigureKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInConfigureKitController.swift; path = "View/Gear Mangement/CellInConfigureKitController.swift"; sourceTree = "<group>"; };
 		EBB0BD971F51ED240017E570 /* NameKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameKitVC.swift; path = "Controller/Gear Management/NameKitVC.swift"; sourceTree = "<group>"; };
@@ -110,6 +114,15 @@
 		EB87CFC51F606D9500E8E608 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				EB87CFC61F60758300E8E608 /* WeatherVC.swift */,
+			);
+			name = Weather;
+			sourceTree = "<group>";
+		};
+		EB87CFC81F6090D900E8E608 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				EB87CFC91F60911C00E8E608 /* CellInWeatherVC.swift */,
 			);
 			name = Weather;
 			sourceTree = "<group>";
@@ -197,7 +210,7 @@
 			children = (
 				EBB51CBA1F30C885008AB300 /* Reference */,
 				EBB51CAB1F2E5FCD008AB300 /* Models */,
-				EBB51CAA1F2E5FC6008AB300 /* Control */,
+				EBB51CAA1F2E5FC6008AB300 /* Controller */,
 				EBB51CA91F2E5FBC008AB300 /* Views */,
 				EBB51C981F2CFDD8008AB300 /* Main.storyboard */,
 				EBB51C9E1F2CFDD8008AB300 /* Assets.xcassets */,
@@ -212,11 +225,12 @@
 			isa = PBXGroup;
 			children = (
 				EBB0BDA51F5D52B60017E570 /* Gear Management */,
+				EB87CFC81F6090D900E8E608 /* Weather */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		EBB51CAA1F2E5FC6008AB300 /* Control */ = {
+		EBB51CAA1F2E5FC6008AB300 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				EBB51C961F2CFDD8008AB300 /* MainScreenVC.swift */,
@@ -224,7 +238,7 @@
 				EBB0BDA61F5E971C0017E570 /* Calculating */,
 				EB87CFC51F606D9500E8E608 /* Weather */,
 			);
-			name = Control;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		EBB51CAB1F2E5FCD008AB300 /* Models */ = {
@@ -336,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBB51D531F4C278F008AB300 /* GearInCategoryOrKitVC.swift in Sources */,
+				EB87CFC71F60758300E8E608 /* WeatherVC.swift in Sources */,
 				EBB51D121F44E19F008AB300 /* SendAndReceiveDataDelegate.swift in Sources */,
 				EBB51C971F2CFDD8008AB300 /* MainScreenVC.swift in Sources */,
 				EBB51D4D1F4B6FD4008AB300 /* Gear+CoreDataProperties.swift in Sources */,
@@ -350,6 +365,7 @@
 				EBB51D4C1F4B6FD4008AB300 /* Gear+CoreDataClass.swift in Sources */,
 				EBB0BDAA1F5EA19F0017E570 /* DepthOfFieldVC.swift in Sources */,
 				EBB0BD9E1F5368420017E570 /* UICollectionViewControllerEx.swift in Sources */,
+				EB87CFCA1F60911C00E8E608 /* CellInWeatherVC.swift in Sources */,
 				EB87CFC21F600D5F00E8E608 /* FractionStringToFractionFloat.swift in Sources */,
 				EBB0BD921F51AE450017E570 /* ConfigureKitVC.swift in Sources */,
 				EBB51D501F4B6FD4008AB300 /* Kit+CoreDataClass.swift in Sources */,
