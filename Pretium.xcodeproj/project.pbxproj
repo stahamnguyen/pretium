@@ -51,49 +51,49 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EB87CFBF1F5FF53E00E8E608 /* StackingNDFilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackingNDFilterVC.swift; sourceTree = "<group>"; };
+		EB87CFBF1F5FF53E00E8E608 /* StackingNDFilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackingNDFilterVC.swift; path = Controller/Calculating/StackingNDFilterVC.swift; sourceTree = "<group>"; };
 		EB87CFC11F600D5F00E8E608 /* FractionStringToFractionFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FractionStringToFractionFloat.swift; sourceTree = "<group>"; };
-		EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackingNdFiltersCalculator.swift; sourceTree = "<group>"; };
-		EBB0BD911F51AE450017E570 /* ConfigureKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureKitVC.swift; sourceTree = "<group>"; };
-		EBB0BD931F51B9860017E570 /* CellInConfigureKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInConfigureKitController.swift; sourceTree = "<group>"; };
-		EBB0BD971F51ED240017E570 /* NameKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameKitVC.swift; sourceTree = "<group>"; };
-		EBB0BD991F531DFA0017E570 /* AddGearToKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGearToKitVC.swift; sourceTree = "<group>"; };
-		EBB0BD9B1F535C990017E570 /* CheckMarkOfCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckMarkOfCollectionViewCell.swift; sourceTree = "<group>"; };
+		EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackingNdFiltersCalculator.swift; path = Calculating/StackingNdFiltersCalculator.swift; sourceTree = "<group>"; };
+		EBB0BD911F51AE450017E570 /* ConfigureKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigureKitVC.swift; path = "Controller/Gear Management/ConfigureKitVC.swift"; sourceTree = "<group>"; };
+		EBB0BD931F51B9860017E570 /* CellInConfigureKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInConfigureKitController.swift; path = "View/Gear Mangement/CellInConfigureKitController.swift"; sourceTree = "<group>"; };
+		EBB0BD971F51ED240017E570 /* NameKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameKitVC.swift; path = "Controller/Gear Management/NameKitVC.swift"; sourceTree = "<group>"; };
+		EBB0BD991F531DFA0017E570 /* AddGearToKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddGearToKitVC.swift; path = "Controller/Gear Management/AddGearToKitVC.swift"; sourceTree = "<group>"; };
+		EBB0BD9B1F535C990017E570 /* CheckMarkOfCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckMarkOfCollectionViewCell.swift; path = "View/Gear Mangement/CheckMarkOfCollectionViewCell.swift"; sourceTree = "<group>"; };
 		EBB0BD9D1F5368420017E570 /* UICollectionViewControllerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewControllerEx.swift; sourceTree = "<group>"; };
-		EBB0BD9F1F572CC80017E570 /* AddKitsForGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddKitsForGearVC.swift; sourceTree = "<group>"; };
-		EBB0BDA11F5865530017E570 /* SearchGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGearVC.swift; sourceTree = "<group>"; };
-		EBB0BDA71F5E98980017E570 /* CalculatingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatingVC.swift; sourceTree = "<group>"; };
-		EBB0BDA91F5EA19F0017E570 /* DepthOfFieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthOfFieldVC.swift; sourceTree = "<group>"; };
-		EBB0BDAD1F5F36A90017E570 /* PhotographyParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotographyParameter.swift; sourceTree = "<group>"; };
+		EBB0BD9F1F572CC80017E570 /* AddKitsForGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddKitsForGearVC.swift; path = "Controller/Gear Management/AddKitsForGearVC.swift"; sourceTree = "<group>"; };
+		EBB0BDA11F5865530017E570 /* SearchGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchGearVC.swift; path = "Controller/Gear Management/SearchGearVC.swift"; sourceTree = "<group>"; };
+		EBB0BDA71F5E98980017E570 /* CalculatingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatingVC.swift; path = Controller/Calculating/CalculatingVC.swift; sourceTree = "<group>"; };
+		EBB0BDA91F5EA19F0017E570 /* DepthOfFieldVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DepthOfFieldVC.swift; path = Controller/Calculating/DepthOfFieldVC.swift; sourceTree = "<group>"; };
+		EBB0BDAD1F5F36A90017E570 /* PhotographyParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotographyParameter.swift; path = Calculating/PhotographyParameter.swift; sourceTree = "<group>"; };
 		EBB51C911F2CFDD8008AB300 /* Pretium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pretium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB51C941F2CFDD8008AB300 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBB51C961F2CFDD8008AB300 /* MainScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenVC.swift; sourceTree = "<group>"; };
+		EBB51C961F2CFDD8008AB300 /* MainScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainScreenVC.swift; path = Controller/MainScreenVC.swift; sourceTree = "<group>"; };
 		EBB51C991F2CFDD8008AB300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBB51C9C1F2CFDD8008AB300 /* Pretium.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pretium.xcdatamodel; sourceTree = "<group>"; };
 		EBB51C9E1F2CFDD8008AB300 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBB51CA11F2CFDD8008AB300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBB51CA31F2CFDD8008AB300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBB51CAC1F2E69FB008AB300 /* AppDelegateEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegateEx.swift; path = ../AppDelegateEx.swift; sourceTree = "<group>"; };
-		EBB51CB21F2E7A4E008AB300 /* CustomButtonMainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonMainScreen.swift; sourceTree = "<group>"; };
-		EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
-		EBB51CB81F2FCB2B008AB300 /* GearManagementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearManagementVC.swift; sourceTree = "<group>"; };
+		EBB51CAC1F2E69FB008AB300 /* AppDelegateEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateEx.swift; sourceTree = "<group>"; };
+		EBB51CB21F2E7A4E008AB300 /* CustomButtonMainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButtonMainScreen.swift; path = "View/Gear Mangement/CustomButtonMainScreen.swift"; sourceTree = "<group>"; };
+		EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadialGradientView.swift; path = "View/Gear Mangement/RadialGradientView.swift"; sourceTree = "<group>"; };
+		EBB51CB81F2FCB2B008AB300 /* GearManagementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GearManagementVC.swift; path = "Controller/Gear Management/GearManagementVC.swift"; sourceTree = "<group>"; };
 		EBB51CBB1F30C8B5008AB300 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		EBB51CFA1F38C581008AB300 /* ConfigureGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureGearVC.swift; sourceTree = "<group>"; };
-		EBB51CFE1F3A21D6008AB300 /* CellInAddGearController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInAddGearController.swift; sourceTree = "<group>"; };
-		EBB51D021F3A5F02008AB300 /* CustomPaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPaddingTextField.swift; sourceTree = "<group>"; };
+		EBB51CFA1F38C581008AB300 /* ConfigureGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigureGearVC.swift; path = "Controller/Gear Management/ConfigureGearVC.swift"; sourceTree = "<group>"; };
+		EBB51CFE1F3A21D6008AB300 /* CellInAddGearController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInAddGearController.swift; path = "View/Gear Mangement/CellInAddGearController.swift"; sourceTree = "<group>"; };
+		EBB51D021F3A5F02008AB300 /* CustomPaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPaddingTextField.swift; path = "View/Gear Mangement/CustomPaddingTextField.swift"; sourceTree = "<group>"; };
 		EBB51D061F3CBC91008AB300 /* UIViewControllerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerEx.swift; sourceTree = "<group>"; };
 		EBB51D081F421A31008AB300 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
-		EBB51D0C1F44BD14008AB300 /* CategorySelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionVC.swift; sourceTree = "<group>"; };
-		EBB51D0E1F44BE00008AB300 /* CellInCategoryControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInCategoryControlller.swift; sourceTree = "<group>"; };
+		EBB51D0C1F44BD14008AB300 /* CategorySelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategorySelectionVC.swift; path = "Controller/Gear Management/CategorySelectionVC.swift"; sourceTree = "<group>"; };
+		EBB51D0E1F44BE00008AB300 /* CellInCategoryControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInCategoryControlller.swift; path = "View/Gear Mangement/CellInCategoryControlller.swift"; sourceTree = "<group>"; };
 		EBB51D111F44E19F008AB300 /* SendAndReceiveDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendAndReceiveDataDelegate.swift; sourceTree = "<group>"; };
-		EBB51D2A1F4A0FEC008AB300 /* CustomCellInGearManagementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellInGearManagementController.swift; sourceTree = "<group>"; };
-		EBB51D461F4B6FD4008AB300 /* Gear+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Gear+CoreDataClass.swift"; path = "../Gear+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EBB51D471F4B6FD4008AB300 /* Gear+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Gear+CoreDataProperties.swift"; path = "../Gear+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EBB51D481F4B6FD4008AB300 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataClass.swift"; path = "../Category+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EBB51D491F4B6FD4008AB300 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "../Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EBB51D4A1F4B6FD4008AB300 /* Kit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Kit+CoreDataClass.swift"; path = "../Kit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EBB51D4B1F4B6FD4008AB300 /* Kit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Kit+CoreDataProperties.swift"; path = "../Kit+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EBB51D521F4C278F008AB300 /* GearInCategoryOrKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearInCategoryOrKitVC.swift; sourceTree = "<group>"; };
+		EBB51D2A1F4A0FEC008AB300 /* CustomCellInGearManagementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCellInGearManagementController.swift; path = "View/Gear Mangement/CustomCellInGearManagementController.swift"; sourceTree = "<group>"; };
+		EBB51D461F4B6FD4008AB300 /* Gear+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gear+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB51D471F4B6FD4008AB300 /* Gear+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gear+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB51D481F4B6FD4008AB300 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB51D491F4B6FD4008AB300 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB51D4A1F4B6FD4008AB300 /* Kit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Kit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBB51D4B1F4B6FD4008AB300 /* Kit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Kit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBB51D521F4C278F008AB300 /* GearInCategoryOrKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GearInCategoryOrKitVC.swift; path = "Controller/Gear Management/GearInCategoryOrKitVC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +107,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB87CFC51F606D9500E8E608 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Weather;
+			sourceTree = "<group>";
+		};
 		EBB0BDA31F5D527E0017E570 /* Gear Management */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +164,7 @@
 				EBB51D131F498BF8008AB300 /* Generated */,
 			);
 			name = GearManagement;
+			path = "Gear Management";
 			sourceTree = "<group>";
 		};
 		EBB0BDAC1F5F36520017E570 /* Calculating */ = {
@@ -191,8 +199,6 @@
 				EBB51CAB1F2E5FCD008AB300 /* Models */,
 				EBB51CAA1F2E5FC6008AB300 /* Control */,
 				EBB51CA91F2E5FBC008AB300 /* Views */,
-				EBB51C941F2CFDD8008AB300 /* AppDelegate.swift */,
-				EBB51CAC1F2E69FB008AB300 /* AppDelegateEx.swift */,
 				EBB51C981F2CFDD8008AB300 /* Main.storyboard */,
 				EBB51C9E1F2CFDD8008AB300 /* Assets.xcassets */,
 				EBB51CA01F2CFDD8008AB300 /* LaunchScreen.storyboard */,
@@ -216,6 +222,7 @@
 				EBB51C961F2CFDD8008AB300 /* MainScreenVC.swift */,
 				EBB0BDA31F5D527E0017E570 /* Gear Management */,
 				EBB0BDA61F5E971C0017E570 /* Calculating */,
+				EB87CFC51F606D9500E8E608 /* Weather */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -227,6 +234,7 @@
 				EBB0BDAC1F5F36520017E570 /* Calculating */,
 			);
 			name = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EBB51CBA1F30C885008AB300 /* Reference */ = {
@@ -238,8 +246,10 @@
 				EBB51D111F44E19F008AB300 /* SendAndReceiveDataDelegate.swift */,
 				EBB0BD9D1F5368420017E570 /* UICollectionViewControllerEx.swift */,
 				EB87CFC11F600D5F00E8E608 /* FractionStringToFractionFloat.swift */,
+				EBB51C941F2CFDD8008AB300 /* AppDelegate.swift */,
+				EBB51CAC1F2E69FB008AB300 /* AppDelegateEx.swift */,
 			);
-			name = Reference;
+			path = Reference;
 			sourceTree = "<group>";
 		};
 		EBB51D131F498BF8008AB300 /* Generated */ = {
@@ -249,7 +259,7 @@
 				EBB51D491F4B6FD4008AB300 /* Category+CoreDataProperties.swift */,
 				EBB51D4B1F4B6FD4008AB300 /* Kit+CoreDataProperties.swift */,
 			);
-			name = Generated;
+			path = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
