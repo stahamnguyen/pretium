@@ -2,16 +2,16 @@
 This is my own project building an almost complete iOS application of photography in Swift.
 
 ## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ## Prerequisites
-Xcode 8 or above has been installed in your computer.
+Xcode 8 or above has been installed in your computer
 
 ## Installing
 Clone the code to your computer and open with Xcode 8 or above
 
 ## Language
-[Swift]
+Swift
 
 ## Functionalities
 1. Store and list all photography gears, kits and their detail information so that the user could easily manage and monitor.
@@ -32,4 +32,4 @@ Clone the code to your computer and open with Xcode 8 or above
 #### Sep 10, 2017 - 1.0 
 
 ## Authors
-* **Nguyen Nguyen** - *Initial work* - [StahamNguyen](https://github.com/stahamnguyen)
+* **Nguyen Nguyen** - *Initial work* - [Staham Nguyen](https://github.com/stahamnguyen)
