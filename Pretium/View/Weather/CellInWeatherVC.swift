@@ -17,15 +17,15 @@ class CellInWeatherVC: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setup(label: dateLabel, withFrameX: 23, y: 16.5, width: 120, height: 23, textAlignment: .left, textColor: .white, fontSizeIphone5: 14, fontSizeIphone6: 16, fontSizeIphone6Plus: 18, text: "Wednesday")
+        setup(label: dateLabel, withFrameX: 23, y: 16.5, width: 120, height: 23, textAlignment: .left, textColor: .white, fontSizeIphone5: 14, fontSizeIphone6: 16, fontSizeIphone6Plus: 18, text: "N/A")
         
-        weatherStatusImageView.frame = Create.frameScaledToIphone6Plus(x: 207, y: 16.5, width: 31, height: 23)
+        weatherStatusImageView.frame = Create.frameScaledToIphone6Plus(x: 187, y: 16.5, width: 31, height: 23)
         weatherStatusImageView.image = UIImage(named: "cloudy")
         weatherStatusImageView.contentMode = .scaleAspectFit
         addSubview(weatherStatusImageView)
         
-        setup(label: highestTemperatureLabel, withFrameX: 307, y: 16.5, width: 40, height: 23, textAlignment: .right, textColor: .white, fontSizeIphone5: 14, fontSizeIphone6: 16, fontSizeIphone6Plus: 18, text: "80°")
-        setup(label: lowestTemperatureLabel, withFrameX: 355, y: 16.5, width: 40, height: 23, textAlignment: .right, textColor: .lightGray, fontSizeIphone5: 14, fontSizeIphone6: 16, fontSizeIphone6Plus: 18, text: "80°")
+        setup(label: highestTemperatureLabel, withFrameX: 263, y: 16.5, width: 60, height: 23, textAlignment: .right, textColor: .white, fontSizeIphone5: 14, fontSizeIphone6: 16, fontSizeIphone6Plus: 18, text: "N/A")
+        setup(label: lowestTemperatureLabel, withFrameX: 331, y: 16.5, width: 60, height: 23, textAlignment: .right, textColor: .lightGray, fontSizeIphone5: 14, fontSizeIphone6: 16, fontSizeIphone6Plus: 18, text: "N/A")
         
         backgroundColor = .clear
         selectionStyle = .none

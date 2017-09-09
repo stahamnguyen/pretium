@@ -12,12 +12,16 @@
 		EB87CFC41F60110500E8E608 /* StackingNdFiltersCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */; };
 		EB87CFC71F60758300E8E608 /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC61F60758300E8E608 /* WeatherVC.swift */; };
 		EB87CFCA1F60911C00E8E608 /* CellInWeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFC91F60911C00E8E608 /* CellInWeatherVC.swift */; };
+		EB87CFD11F62F8BE00E8E608 /* CurrentWeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFD01F62F8BE00E8E608 /* CurrentWeatherManager.swift */; };
+		EB87CFD31F646CB200E8E608 /* WeatherForecastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFD21F646CB200E8E608 /* WeatherForecastManager.swift */; };
+		EB87CFD51F64776A00E8E608 /* GetDayOfTheWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFD41F64776A00E8E608 /* GetDayOfTheWeek.swift */; };
+		EB87CFD91F64900000E8E608 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87CFD81F64900000E8E608 /* Location.swift */; };
 		EBB0BD921F51AE450017E570 /* ConfigureKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD911F51AE450017E570 /* ConfigureKitVC.swift */; };
 		EBB0BD941F51B9860017E570 /* CellInConfigureKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD931F51B9860017E570 /* CellInConfigureKitController.swift */; };
 		EBB0BD981F51ED240017E570 /* NameKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD971F51ED240017E570 /* NameKitVC.swift */; };
 		EBB0BD9A1F531DFA0017E570 /* AddGearToKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD991F531DFA0017E570 /* AddGearToKitVC.swift */; };
 		EBB0BD9C1F535C990017E570 /* CheckMarkOfCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD9B1F535C990017E570 /* CheckMarkOfCollectionViewCell.swift */; };
-		EBB0BD9E1F5368420017E570 /* UICollectionViewControllerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD9D1F5368420017E570 /* UICollectionViewControllerEx.swift */; };
+		EBB0BD9E1F5368420017E570 /* PartlySetupLayoutOfUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD9D1F5368420017E570 /* PartlySetupLayoutOfUICollectionView.swift */; };
 		EBB0BDA01F572CC80017E570 /* AddKitsForGearVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BD9F1F572CC80017E570 /* AddKitsForGearVC.swift */; };
 		EBB0BDA21F5865530017E570 /* SearchGearVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BDA11F5865530017E570 /* SearchGearVC.swift */; };
 		EBB0BDA81F5E98980017E570 /* CalculatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB0BDA71F5E98980017E570 /* CalculatingVC.swift */; };
@@ -33,12 +37,12 @@
 		EBB51CB31F2E7A4E008AB300 /* CustomButtonMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB21F2E7A4E008AB300 /* CustomButtonMainScreen.swift */; };
 		EBB51CB71F2FBD22008AB300 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */; };
 		EBB51CB91F2FCB2B008AB300 /* GearManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CB81F2FCB2B008AB300 /* GearManagementVC.swift */; };
-		EBB51CBC1F30C8B5008AB300 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CBB1F30C8B5008AB300 /* Constant.swift */; };
+		EBB51CBC1F30C8B5008AB300 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CBB1F30C8B5008AB300 /* Constants.swift */; };
 		EBB51CFB1F38C581008AB300 /* ConfigureGearVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CFA1F38C581008AB300 /* ConfigureGearVC.swift */; };
 		EBB51CFF1F3A21D6008AB300 /* CellInAddGearController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51CFE1F3A21D6008AB300 /* CellInAddGearController.swift */; };
 		EBB51D031F3A5F02008AB300 /* CustomPaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D021F3A5F02008AB300 /* CustomPaddingTextField.swift */; };
-		EBB51D071F3CBC91008AB300 /* UIViewControllerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D061F3CBC91008AB300 /* UIViewControllerEx.swift */; };
-		EBB51D091F421A31008AB300 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D081F421A31008AB300 /* StringEx.swift */; };
+		EBB51D071F3CBC91008AB300 /* HideKeyBoardWhenTappingAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D061F3CBC91008AB300 /* HideKeyBoardWhenTappingAround.swift */; };
+		EBB51D091F421A31008AB300 /* CurrencyInputFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D081F421A31008AB300 /* CurrencyInputFormatting.swift */; };
 		EBB51D0D1F44BD14008AB300 /* CategorySelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D0C1F44BD14008AB300 /* CategorySelectionVC.swift */; };
 		EBB51D0F1F44BE00008AB300 /* CellInCategoryControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D0E1F44BE00008AB300 /* CellInCategoryControlller.swift */; };
 		EBB51D121F44E19F008AB300 /* SendAndReceiveDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB51D111F44E19F008AB300 /* SendAndReceiveDataDelegate.swift */; };
@@ -58,12 +62,16 @@
 		EB87CFC31F60110500E8E608 /* StackingNdFiltersCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackingNdFiltersCalculator.swift; path = Calculating/StackingNdFiltersCalculator.swift; sourceTree = "<group>"; };
 		EB87CFC61F60758300E8E608 /* WeatherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherVC.swift; path = Controller/Weather/WeatherVC.swift; sourceTree = "<group>"; };
 		EB87CFC91F60911C00E8E608 /* CellInWeatherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInWeatherVC.swift; path = View/Weather/CellInWeatherVC.swift; sourceTree = "<group>"; };
+		EB87CFD01F62F8BE00E8E608 /* CurrentWeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentWeatherManager.swift; path = Weather/CurrentWeatherManager.swift; sourceTree = "<group>"; };
+		EB87CFD21F646CB200E8E608 /* WeatherForecastManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherForecastManager.swift; path = Weather/WeatherForecastManager.swift; sourceTree = "<group>"; };
+		EB87CFD41F64776A00E8E608 /* GetDayOfTheWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDayOfTheWeek.swift; sourceTree = "<group>"; };
+		EB87CFD81F64900000E8E608 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EBB0BD911F51AE450017E570 /* ConfigureKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigureKitVC.swift; path = "Controller/Gear Management/ConfigureKitVC.swift"; sourceTree = "<group>"; };
 		EBB0BD931F51B9860017E570 /* CellInConfigureKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInConfigureKitController.swift; path = "View/Gear Mangement/CellInConfigureKitController.swift"; sourceTree = "<group>"; };
 		EBB0BD971F51ED240017E570 /* NameKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameKitVC.swift; path = "Controller/Gear Management/NameKitVC.swift"; sourceTree = "<group>"; };
 		EBB0BD991F531DFA0017E570 /* AddGearToKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddGearToKitVC.swift; path = "Controller/Gear Management/AddGearToKitVC.swift"; sourceTree = "<group>"; };
 		EBB0BD9B1F535C990017E570 /* CheckMarkOfCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckMarkOfCollectionViewCell.swift; path = "View/Gear Mangement/CheckMarkOfCollectionViewCell.swift"; sourceTree = "<group>"; };
-		EBB0BD9D1F5368420017E570 /* UICollectionViewControllerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewControllerEx.swift; sourceTree = "<group>"; };
+		EBB0BD9D1F5368420017E570 /* PartlySetupLayoutOfUICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartlySetupLayoutOfUICollectionView.swift; sourceTree = "<group>"; };
 		EBB0BD9F1F572CC80017E570 /* AddKitsForGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddKitsForGearVC.swift; path = "Controller/Gear Management/AddKitsForGearVC.swift"; sourceTree = "<group>"; };
 		EBB0BDA11F5865530017E570 /* SearchGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchGearVC.swift; path = "Controller/Gear Management/SearchGearVC.swift"; sourceTree = "<group>"; };
 		EBB0BDA71F5E98980017E570 /* CalculatingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculatingVC.swift; path = Controller/Calculating/CalculatingVC.swift; sourceTree = "<group>"; };
@@ -81,12 +89,12 @@
 		EBB51CB21F2E7A4E008AB300 /* CustomButtonMainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButtonMainScreen.swift; path = "View/Gear Mangement/CustomButtonMainScreen.swift"; sourceTree = "<group>"; };
 		EBB51CB61F2FBD22008AB300 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadialGradientView.swift; path = "View/Gear Mangement/RadialGradientView.swift"; sourceTree = "<group>"; };
 		EBB51CB81F2FCB2B008AB300 /* GearManagementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GearManagementVC.swift; path = "Controller/Gear Management/GearManagementVC.swift"; sourceTree = "<group>"; };
-		EBB51CBB1F30C8B5008AB300 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		EBB51CBB1F30C8B5008AB300 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EBB51CFA1F38C581008AB300 /* ConfigureGearVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigureGearVC.swift; path = "Controller/Gear Management/ConfigureGearVC.swift"; sourceTree = "<group>"; };
 		EBB51CFE1F3A21D6008AB300 /* CellInAddGearController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInAddGearController.swift; path = "View/Gear Mangement/CellInAddGearController.swift"; sourceTree = "<group>"; };
 		EBB51D021F3A5F02008AB300 /* CustomPaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPaddingTextField.swift; path = "View/Gear Mangement/CustomPaddingTextField.swift"; sourceTree = "<group>"; };
-		EBB51D061F3CBC91008AB300 /* UIViewControllerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerEx.swift; sourceTree = "<group>"; };
-		EBB51D081F421A31008AB300 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
+		EBB51D061F3CBC91008AB300 /* HideKeyBoardWhenTappingAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideKeyBoardWhenTappingAround.swift; sourceTree = "<group>"; };
+		EBB51D081F421A31008AB300 /* CurrencyInputFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyInputFormatting.swift; sourceTree = "<group>"; };
 		EBB51D0C1F44BD14008AB300 /* CategorySelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategorySelectionVC.swift; path = "Controller/Gear Management/CategorySelectionVC.swift"; sourceTree = "<group>"; };
 		EBB51D0E1F44BE00008AB300 /* CellInCategoryControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellInCategoryControlller.swift; path = "View/Gear Mangement/CellInCategoryControlller.swift"; sourceTree = "<group>"; };
 		EBB51D111F44E19F008AB300 /* SendAndReceiveDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendAndReceiveDataDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +131,15 @@
 			isa = PBXGroup;
 			children = (
 				EB87CFC91F60911C00E8E608 /* CellInWeatherVC.swift */,
+			);
+			name = Weather;
+			sourceTree = "<group>";
+		};
+		EB87CFCD1F61BFDB00E8E608 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				EB87CFD01F62F8BE00E8E608 /* CurrentWeatherManager.swift */,
+				EB87CFD21F646CB200E8E608 /* WeatherForecastManager.swift */,
 			);
 			name = Weather;
 			sourceTree = "<group>";
@@ -208,7 +225,7 @@
 		EBB51C931F2CFDD8008AB300 /* Pretium */ = {
 			isa = PBXGroup;
 			children = (
-				EBB51CBA1F30C885008AB300 /* Reference */,
+				EBB51CBA1F30C885008AB300 /* Constant and Helper */,
 				EBB51CAB1F2E5FCD008AB300 /* Models */,
 				EBB51CAA1F2E5FC6008AB300 /* Controller */,
 				EBB51CA91F2E5FBC008AB300 /* Views */,
@@ -246,23 +263,27 @@
 			children = (
 				EBB0BDAB1F5F36380017E570 /* GearManagement */,
 				EBB0BDAC1F5F36520017E570 /* Calculating */,
+				EB87CFCD1F61BFDB00E8E608 /* Weather */,
 			);
 			name = Models;
 			path = Model;
 			sourceTree = "<group>";
 		};
-		EBB51CBA1F30C885008AB300 /* Reference */ = {
+		EBB51CBA1F30C885008AB300 /* Constant and Helper */ = {
 			isa = PBXGroup;
 			children = (
-				EBB51CBB1F30C8B5008AB300 /* Constant.swift */,
-				EBB51D061F3CBC91008AB300 /* UIViewControllerEx.swift */,
-				EBB51D081F421A31008AB300 /* StringEx.swift */,
+				EBB51D061F3CBC91008AB300 /* HideKeyBoardWhenTappingAround.swift */,
+				EBB51D081F421A31008AB300 /* CurrencyInputFormatting.swift */,
 				EBB51D111F44E19F008AB300 /* SendAndReceiveDataDelegate.swift */,
-				EBB0BD9D1F5368420017E570 /* UICollectionViewControllerEx.swift */,
+				EBB0BD9D1F5368420017E570 /* PartlySetupLayoutOfUICollectionView.swift */,
 				EB87CFC11F600D5F00E8E608 /* FractionStringToFractionFloat.swift */,
 				EBB51C941F2CFDD8008AB300 /* AppDelegate.swift */,
 				EBB51CAC1F2E69FB008AB300 /* AppDelegateEx.swift */,
+				EB87CFD41F64776A00E8E608 /* GetDayOfTheWeek.swift */,
+				EBB51CBB1F30C8B5008AB300 /* Constants.swift */,
+				EB87CFD81F64900000E8E608 /* Location.swift */,
 			);
+			name = "Constant and Helper";
 			path = Reference;
 			sourceTree = "<group>";
 		};
@@ -351,22 +372,24 @@
 			files = (
 				EBB51D531F4C278F008AB300 /* GearInCategoryOrKitVC.swift in Sources */,
 				EB87CFC71F60758300E8E608 /* WeatherVC.swift in Sources */,
+				EB87CFD11F62F8BE00E8E608 /* CurrentWeatherManager.swift in Sources */,
 				EBB51D121F44E19F008AB300 /* SendAndReceiveDataDelegate.swift in Sources */,
 				EBB51C971F2CFDD8008AB300 /* MainScreenVC.swift in Sources */,
 				EBB51D4D1F4B6FD4008AB300 /* Gear+CoreDataProperties.swift in Sources */,
 				EB87CFC01F5FF53E00E8E608 /* StackingNDFilterVC.swift in Sources */,
 				EBB51D0D1F44BD14008AB300 /* CategorySelectionVC.swift in Sources */,
-				EBB51D091F421A31008AB300 /* StringEx.swift in Sources */,
+				EBB51D091F421A31008AB300 /* CurrencyInputFormatting.swift in Sources */,
 				EBB0BDA81F5E98980017E570 /* CalculatingVC.swift in Sources */,
 				EBB0BD9C1F535C990017E570 /* CheckMarkOfCollectionViewCell.swift in Sources */,
-				EBB51CBC1F30C8B5008AB300 /* Constant.swift in Sources */,
+				EBB51CBC1F30C8B5008AB300 /* Constants.swift in Sources */,
 				EBB51CFF1F3A21D6008AB300 /* CellInAddGearController.swift in Sources */,
 				EBB51CB71F2FBD22008AB300 /* RadialGradientView.swift in Sources */,
 				EBB51D4C1F4B6FD4008AB300 /* Gear+CoreDataClass.swift in Sources */,
 				EBB0BDAA1F5EA19F0017E570 /* DepthOfFieldVC.swift in Sources */,
-				EBB0BD9E1F5368420017E570 /* UICollectionViewControllerEx.swift in Sources */,
+				EBB0BD9E1F5368420017E570 /* PartlySetupLayoutOfUICollectionView.swift in Sources */,
 				EB87CFCA1F60911C00E8E608 /* CellInWeatherVC.swift in Sources */,
 				EB87CFC21F600D5F00E8E608 /* FractionStringToFractionFloat.swift in Sources */,
+				EB87CFD51F64776A00E8E608 /* GetDayOfTheWeek.swift in Sources */,
 				EBB0BD921F51AE450017E570 /* ConfigureKitVC.swift in Sources */,
 				EBB51D501F4B6FD4008AB300 /* Kit+CoreDataClass.swift in Sources */,
 				EBB0BDA21F5865530017E570 /* SearchGearVC.swift in Sources */,
@@ -375,11 +398,13 @@
 				EBB0BDAE1F5F36A90017E570 /* PhotographyParameter.swift in Sources */,
 				EBB51CFB1F38C581008AB300 /* ConfigureGearVC.swift in Sources */,
 				EBB0BD9A1F531DFA0017E570 /* AddGearToKitVC.swift in Sources */,
+				EB87CFD31F646CB200E8E608 /* WeatherForecastManager.swift in Sources */,
 				EBB51C951F2CFDD8008AB300 /* AppDelegate.swift in Sources */,
 				EBB51C9D1F2CFDD8008AB300 /* Pretium.xcdatamodeld in Sources */,
 				EBB0BD981F51ED240017E570 /* NameKitVC.swift in Sources */,
 				EBB51CAD1F2E69FB008AB300 /* AppDelegateEx.swift in Sources */,
 				EBB51D0F1F44BE00008AB300 /* CellInCategoryControlller.swift in Sources */,
+				EB87CFD91F64900000E8E608 /* Location.swift in Sources */,
 				EBB51CB31F2E7A4E008AB300 /* CustomButtonMainScreen.swift in Sources */,
 				EBB51D4E1F4B6FD4008AB300 /* Category+CoreDataClass.swift in Sources */,
 				EBB0BDA01F572CC80017E570 /* AddKitsForGearVC.swift in Sources */,
@@ -388,7 +413,7 @@
 				EBB51D031F3A5F02008AB300 /* CustomPaddingTextField.swift in Sources */,
 				EBB51D2B1F4A0FEC008AB300 /* CustomCellInGearManagementController.swift in Sources */,
 				EBB0BD941F51B9860017E570 /* CellInConfigureKitController.swift in Sources */,
-				EBB51D071F3CBC91008AB300 /* UIViewControllerEx.swift in Sources */,
+				EBB51D071F3CBC91008AB300 /* HideKeyBoardWhenTappingAround.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

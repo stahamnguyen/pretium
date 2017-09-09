@@ -43,5 +43,43 @@ struct Current {
     static var GEAR_MANAGEMENT_CONTROLLER: GearManagementController = GearManagementController()
 }
 
+// ---   WEATHER API   ---
+
+struct WeatherApi {
+    static let BASE_URL_OF_CURRENT_WEATHER = "http://api.openweathermap.org/data/2.5/weather?"
+    static let BASE_URL_OF_WEATHER_FORECAST = "http://api.openweathermap.org/data/2.5/forecast/daily?"
+    static let LATTITUDE = "lat="
+    static let LONGTITUDE_OF_OPEN_WEATHER_MAP = "&lon="
+    static let FORECASTED_DAYS = "&cnt="
+    static let ID = "&appid="
+    static let KEY = "09b23faf0652d34cf5e3332b886e4d8d"
+    
+    static let BASE_URL_OF_SUNRISE_SUNSET_ORG = "http://api.sunrise-sunset.org/json?"
+    static let LONGTITUDE_OF_SUNRISE_SUNSET_ORG = "&lng="
+    static let DATE = "&date="
+    static let TODAY = "today"
+}
+
+enum ResponseKey: String {
+    case nameOfLocation = "name"
+    case mainStatistic = "main"
+    case humidity = "humidity"
+    case temperature = "temp"
+    case weatherStatus = "weather"
+    
+    case resultsOfGoldenHour = "results"
+    case sunriseTime = "sunrise"
+    case sunsetTime = "sunset"
+    case civilTwilightBegin = "civil_twilight_begin"
+    case civilTwilightEnd = "civil_twilight_end"
+    
+    case listOfForecastingData = "list"
+    case forecastedDate = "dt"
+    case highestTemperature = "max"
+    case lowestTemperature = "min"
+}
+
+// ---   CONTEXT FOR CORE DATA
+
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let context = appDelegate.persistentContainer.viewContext
