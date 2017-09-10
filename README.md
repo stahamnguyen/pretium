@@ -24,9 +24,10 @@ Swift
 3. Manage CoreData to store data and combine searching and updating data through UITableView
 4. Use alert functionality (UIAlertAction)
 5. Use several graphic functionalities such as gradient (CGGradient), customed graphic view (CAShapeLayer)
-6. Download and visualize data from 2 REST APIs about weather.
-7. Use location service to improve the accuracy of the the weather service
-8. Use model MVC to manage the code more easily
+6. Use Timer to create a countdown clock
+7. Download and visualize data from 2 REST APIs about weather.
+8. Use location service to improve the accuracy of the the weather service
+9. Use model MVC to manage the code more easily
 
 ## Versioning:
 #### Sep 10, 2017 - 1.0 
