@@ -80,32 +80,32 @@ class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     private func createSensorField() {
-        createLabel(withText: titleOfSensorField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 87, width: 113, height: 35)
-        createTextField(withTypeOfTextField: .sensor, x: 158, y: 87, width: 226, height: 35)
+        createLabel(withText: titleOfSensorField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 107, width: 113, height: 35)
+        createTextField(withTypeOfTextField: .sensor, x: 158, y: 107, width: 226, height: 35)
     }
     
     private func createFocalLengthField() {
-        createLabel(withText: titleOfFocalLengthField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 133, width: 113, height: 35)
-        createTextField(withTypeOfTextField: .focalLength, x: 158, y: 133, width: 56.5, height: 35)
-        createLabel(withText: titleOfFocalLengthUnitLabel, color: Colors.OF_BUTTON_TITLE, x: 228, y: 133, width: 35, height: 35)
+        createLabel(withText: titleOfFocalLengthField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 153, width: 113, height: 35)
+        createTextField(withTypeOfTextField: .focalLength, x: 158, y: 153, width: 56.5, height: 35)
+        createLabel(withText: titleOfFocalLengthUnitLabel, color: Colors.OF_BUTTON_TITLE, x: 228, y: 153, width: 35, height: 35)
     }
     
     private func createApertureField() {
-        createLabel(withText: titleOfApertureField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 179, width: 113, height: 35)
-        createTextField(withTypeOfTextField: .aperture, x: 158, y: 179, width: 226, height: 35)
+        createLabel(withText: titleOfApertureField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 199, width: 113, height: 35)
+        createTextField(withTypeOfTextField: .aperture, x: 158, y: 199, width: 226, height: 35)
     }
     
     private func createUnitField() {
-        createLabel(withText: titleOfUnitField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 225, width: 113, height: 35)
-        createTextField(withTypeOfTextField: .unit, x: 158, y: 225, width: 226, height: 35)
+        createLabel(withText: titleOfUnitField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 245, width: 113, height: 35)
+        createTextField(withTypeOfTextField: .unit, x: 158, y: 245, width: 226, height: 35)
     }
     
     private func createDistanceField() {
-        createLabel(withText: titleOfDistanceField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 271, width: 113, height: 35)
-        createTextField(withTypeOfTextField: .meterOrFootDistance, x: 158, y: 271, width: 56.5, height: 35)
-        greaterUnitLabel = setupLabel(withText: "m", color: Colors.OF_BUTTON_TITLE, x: 228, y: 271, width: 35, height: 35)
-        createTextField(withTypeOfTextField: .centimeterOrInchDistance, x: 261.5, y: 271, width: 56.5, height: 35)
-        lesserUnitLabel = setupLabel(withText: "cm", color: Colors.OF_BUTTON_TITLE, x: 331.5, y: 271, width: 35, height: 35)
+        createLabel(withText: titleOfDistanceField, color: Colors.OF_BUTTON_TITLE, x: 30, y: 291, width: 113, height: 35)
+        createTextField(withTypeOfTextField: .meterOrFootDistance, x: 158, y: 291, width: 56.5, height: 35)
+        greaterUnitLabel = setupLabel(withText: "m", color: Colors.OF_BUTTON_TITLE, x: 228, y: 291, width: 35, height: 35)
+        createTextField(withTypeOfTextField: .centimeterOrInchDistance, x: 261.5, y: 291, width: 56.5, height: 35)
+        lesserUnitLabel = setupLabel(withText: "cm", color: Colors.OF_BUTTON_TITLE, x: 331.5, y: 291, width: 35, height: 35)
     }
     
     private func createOutputFields() {
@@ -118,33 +118,33 @@ class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     private func createDepthOfFieldResult() {
-        createLabel(withText: titleOfDepthOfField, color: Colors.OF_CONTRAST_ITEMS, x: 30, y: 341, width: 180, height: 35)
-        depthOfFieldResult = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 341, width: 164, height: 35)
+        createLabel(withText: titleOfDepthOfField, color: Colors.OF_CONTRAST_ITEMS, x: 30, y: 361, width: 180, height: 35)
+        depthOfFieldResult = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 361, width: 164, height: 35)
     }
     
     private func createNearDistanceLabelResult() {
-        createLabel(withText: titleOfNearDistance, color: Colors.OF_BUTTON_TITLE, x: 30, y: 376, width: 180, height: 35)
-        nearDistanceResult = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 376, width: 164, height: 35)
+        createLabel(withText: titleOfNearDistance, color: Colors.OF_BUTTON_TITLE, x: 30, y: 396, width: 180, height: 35)
+        nearDistanceResult = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 396, width: 164, height: 35)
     }
     
     private func createFarDistanceResult() {
-        createLabel(withText: titleOfFarDistance, color: Colors.OF_BUTTON_TITLE, x: 30, y: 411, width: 180, height: 35)
-        farDistanceResult = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 411, width: 164, height: 35)
+        createLabel(withText: titleOfFarDistance, color: Colors.OF_BUTTON_TITLE, x: 30, y: 431, width: 180, height: 35)
+        farDistanceResult = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 431, width: 164, height: 35)
     }
     
     private func createHyperfocalResult() {
-        createLabel(withText: titleOfHyperfocal, color: Colors.OF_BUTTON_TITLE, x: 30, y: 446, width: 180, height: 35)
-        hyperfocalResult = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 446, width: 164, height: 35)
+        createLabel(withText: titleOfHyperfocal, color: Colors.OF_BUTTON_TITLE, x: 30, y: 466, width: 180, height: 35)
+        hyperfocalResult = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 466, width: 164, height: 35)
     }
     
     private func createInFrontOfSubjectResult() {
-        createLabel(withText: titleOfInFrontOfSubject, color: Colors.OF_CONTRAST_ITEMS, x: 30, y: 481, width: 180, height: 35)
-        inFrontOfSubject = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 481, width: 164, height: 35)
+        createLabel(withText: titleOfInFrontOfSubject, color: Colors.OF_CONTRAST_ITEMS, x: 30, y: 501, width: 180, height: 35)
+        inFrontOfSubject = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 501, width: 164, height: 35)
     }
     
     private func createBehindSubjectResult() {
-        createLabel(withText: titleOfInFrontOfSubject, color: Colors.OF_CONTRAST_ITEMS, x: 30, y: 516, width: 180, height: 35)
-        behindSubject = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 516, width: 164, height: 35)
+        createLabel(withText: titleOfInFrontOfSubject, color: Colors.OF_CONTRAST_ITEMS, x: 30, y: 536, width: 180, height: 35)
+        behindSubject = setupLabel(withText: "", color: Colors.OF_BUTTON_TITLE, x: 220, y: 536, width: 164, height: 35)
     }
     
     private func createLabel(withText text: String, color: UIColor, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {

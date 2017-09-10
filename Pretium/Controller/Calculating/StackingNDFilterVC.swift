@@ -104,6 +104,7 @@ class StackingNDFiltersController: UIViewController, UIPickerViewDataSource, UIP
             label.text = titleOfPickerView[index]
             label.textColor = Colors.OF_BUTTON_TITLE
             label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 11, forIphone6: 13, forIphone6Plus: 15))
             picker.addSubview(label)
         }
     }
