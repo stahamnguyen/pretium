@@ -325,7 +325,6 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
         
         switch type {
         case .insert:
-            displayEmptyGearOrEmptyKit()
             if (anObject is Category && isCategorySelected) || (anObject is Kit && !isCategorySelected) {
                 if let indexPath = newIndexPath {
                     self.insertItems(at: indexPath)

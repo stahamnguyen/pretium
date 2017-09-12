@@ -103,8 +103,9 @@ class AddGearToKitController: UICollectionViewController, UICollectionViewDelega
             }
             
             AppDelegate.saveContext()
-
-            navigationController?.popToViewController(Current.GEAR_MANAGEMENT_CONTROLLER, animated: true)
+            
+            navigationController?.popToViewController((navigationController?.viewControllers[1])!, animated: true)
+//            navigationController?.popToViewController(Current.GEAR_MANAGEMENT_CONTROLLER, animated: true)
             
         } else {
             for selectedGear in self.selectedGears.values {
