@@ -19,7 +19,7 @@ Swift
 3. Provide current weather information and forecasting in next week, as well as indicating golden hours of the current day so that landscape photographer can arrange their time to catch those moment.
 
 ## Performed skills:
-1. Did not use Storyboard. The whole UI is designed by code. Navigation controller was used instead of segue.
+1. Did not use Storyboard. The whole UI was designed by code. Navigation controller was used instead of segue.
 2. Manage UICollectionView, UITableView
 3. Manage CoreData to store data and combine searching and updating data through UITableView
 4. Use alert functionality (UIAlertAction)
