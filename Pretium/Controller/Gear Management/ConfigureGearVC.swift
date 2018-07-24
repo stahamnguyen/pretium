@@ -345,7 +345,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
         view.layer.borderColor = UIColor.gray.cgColor
         
         let headerLabel = UILabel(frame: Create.frameScaledToIphone6Plus(x: 23, y: 20, width: tableView.bounds.width / Screen.RATIO_WITH_IPHONE_6PLUS, height: 0))
-        headerLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 13, forIphone6: 15, forIphone6Plus: 17), weight: UIFontWeightThin)
+        headerLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 13, forIphone6: 15, forIphone6Plus: 17), weight: UIFont.Weight.thin)
         headerLabel.textColor = .black
         headerLabel.text = sectionTitle[section]
         headerLabel.sizeToFit()
@@ -508,7 +508,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     
     //Action of "Choose photo from library" selection
     private func choosePhotoFromLibrary(){
-        imagePicker.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS]
+        imagePicker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : Colors.OF_CONTRAST_ITEMS]
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
@@ -523,8 +523,7 @@ class ConfigureGearController : UITableViewController, UIImagePickerControllerDe
     }
     
     private func alertThatThereIsNoCamera() {
-        let alertVC = UIAlertController(
-            title: titleOfNoCameraAlert,
+        let alertVC = UIAlertController(            title: titleOfNoCameraAlert,
             message: messageOfNoCameraAlert,
             preferredStyle: .alert)
         let okAction = UIAlertAction(

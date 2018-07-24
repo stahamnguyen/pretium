@@ -65,7 +65,7 @@ class StackingNDFiltersController: UIViewController, UIPickerViewDataSource, UIP
         let label = UILabel(frame: Create.frameScaledToIphone6Plus(x: 28, y: 209, width: 358, height: 76))
         label.textColor = Colors.OF_CONTRAST_ITEMS
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 55, forIphone6: 57, forIphone6Plus: 59), weight: UIFontWeightBold)
+        label.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 55, forIphone6: 57, forIphone6Plus: 59), weight: UIFont.Weight.bold)
         label.text = initialTextOfTimerLabel
         self.timerLabel = label
         view.addSubview(timerLabel)
@@ -188,9 +188,9 @@ class StackingNDFiltersController: UIViewController, UIPickerViewDataSource, UIP
         
         switch component {
         case 0:
-            attributedString = NSAttributedString(string: shutterSpeedTitle[row], attributes: [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS])
+            attributedString = NSAttributedString(string: shutterSpeedTitle[row], attributes: [NSAttributedStringKey.foregroundColor : Colors.OF_CONTRAST_ITEMS])
         default:
-            attributedString = NSAttributedString(string: ndFilterTitles[row], attributes: [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS])
+            attributedString = NSAttributedString(string: ndFilterTitles[row], attributes: [NSAttributedStringKey.foregroundColor : Colors.OF_CONTRAST_ITEMS])
         }
         
         return attributedString

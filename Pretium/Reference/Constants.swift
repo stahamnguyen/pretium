@@ -39,9 +39,9 @@ struct Create {
     }
 }
 
-//struct Current {
-//    static var GEAR_MANAGEMENT_CONTROLLER: GearManagementController = GearManagementController()
-//}
+struct Current {
+    static var GEAR_MANAGEMENT_CONTROLLER: GearManagementController = GearManagementController()
+}
 
 // ---   WEATHER API   ---
 

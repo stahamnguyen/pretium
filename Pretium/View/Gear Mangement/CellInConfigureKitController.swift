@@ -33,7 +33,7 @@ class CellInConfigureKitController: UICollectionViewCell {
         addSubview(backgroundImage)
         
         title.textAlignment = .center
-        title.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 14, forIphone6: 16, forIphone6Plus: 18), weight: UIFontWeightBold)
+        title.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 14, forIphone6: 16, forIphone6Plus: 18), weight: UIFont.Weight.bold)
         title.textColor = .white
         title.frame = Create.frameScaledToIphone6Plus(x: 25, y: 155, width: 143, height: 22)
         addSubview(title)

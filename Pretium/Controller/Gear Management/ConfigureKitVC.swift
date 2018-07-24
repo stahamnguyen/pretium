@@ -133,7 +133,7 @@ class ConfigureKitController: UICollectionViewController, UICollectionViewDelega
     
     //Action of "Choose photo from library" selection
     private func choosePhotoFromLibrary(){
-        imagePicker.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS]
+        imagePicker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : Colors.OF_CONTRAST_ITEMS]
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!

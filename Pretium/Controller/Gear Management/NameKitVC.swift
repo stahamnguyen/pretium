@@ -93,7 +93,7 @@ class NameKitController: UIViewController, UITextFieldDelegate, UIImagePickerCon
         nameTextField.delegate = self
         
         nameTextField.returnKeyType = .done
-        nameTextField.attributedPlaceholder = NSAttributedString(string:placeholderOfNameTextField, attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+        nameTextField.attributedPlaceholder = NSAttributedString(string:placeholderOfNameTextField, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         
         if !isCustomed {
             nameTextField.text = isEdited ? originalNameOfKit : originalNameOfKit.capitalized
@@ -220,7 +220,7 @@ class NameKitController: UIViewController, UITextFieldDelegate, UIImagePickerCon
     
     //Action of "Choose photo from library" selection
     private func choosePhotoFromLibrary(){
-        imagePicker.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS]
+        imagePicker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : Colors.OF_CONTRAST_ITEMS]
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!

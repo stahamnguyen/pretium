@@ -77,6 +77,7 @@ class CurrentWeatherManager {
     
     func processDataForWeatherStatistic(completion: @escaping () -> ()) {
         let urlStringOfOpenWeatherMap = WeatherApi.BASE_URL_OF_CURRENT_WEATHER + WeatherApi.LATTITUDE + "\(Location.shared.latitude!)" + WeatherApi.LONGTITUDE_OF_OPEN_WEATHER_MAP + "\(Location.shared.longitude!)" + WeatherApi.ID + WeatherApi.KEY
+        print(urlStringOfOpenWeatherMap)
         let url = URL(string: urlStringOfOpenWeatherMap)!
         let request = URLRequest(url: url)
         
@@ -110,9 +111,10 @@ class CurrentWeatherManager {
                         //Temperature and Humidity
                         if let currentWeatherMainStatistic = self.getData(of: .mainStatistic, from: dataDictionary) as? [String : Any] {
                             //Temperature
-                            if let currentTemperatureInKelvin = self.getData(of: .temperature, from: currentWeatherMainStatistic) as? Float {
-                                let currentTemperatureInCelcius = currentTemperatureInKelvin - Float(273)
-                                self._currentTemperature = String(format: "%.0f", floorf(currentTemperatureInCelcius))
+                            print(currentWeatherMainStatistic["temp"])
+                            if let currentTemperatureInKelvin = self.getData(of: .temperature, from: currentWeatherMainStatistic) as? Double {
+                                let currentTemperatureInCelcius = currentTemperatureInKelvin - Double(273)
+                                self._currentTemperature = String(format: "%.0f", floor(currentTemperatureInCelcius))
                             }
                             
                             //Humidity

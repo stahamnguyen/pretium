@@ -21,7 +21,7 @@ class CalculatingController: UITableViewController {
         createBackground()
         
         navigationItem.title = titleOfController
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.OF_CONTRAST_ITEMS]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Colors.OF_CONTRAST_ITEMS]
         
         tableView.tableFooterView = UIView()
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)

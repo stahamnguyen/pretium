@@ -46,7 +46,7 @@ class WeatherController: UIViewController, UITableViewDelegate, UITableViewDataS
         locationManager.startMonitoringSignificantLocationChanges()
         
         navigationItem.title = titleOfController
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.OF_CONTRAST_ITEMS]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Colors.OF_CONTRAST_ITEMS]
         
         setupLayout()
         setupTableView()

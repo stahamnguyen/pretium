@@ -40,7 +40,7 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
         
         isCategorySelected = true
         
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.OF_CONTRAST_ITEMS]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Colors.OF_CONTRAST_ITEMS]
         
         createBarItem()
         createSegmentedControlTitleView()
@@ -147,7 +147,7 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
         segmentedControl.selectedSegmentIndex = 0
         
         let fontSize = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 13, forIphone6: 15, forIphone6Plus: 17))
-        segmentedControl.setTitleTextAttributes([NSFontAttributeName:fontSize], for: .normal)
+        segmentedControl.setTitleTextAttributes([NSAttributedStringKey.font:fontSize], for: .normal)
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         self.segmentedController = segmentedControl
         
@@ -282,7 +282,6 @@ class GearManagementController: UICollectionViewController, UICollectionViewDele
     
     
     //  -------   SETUP CORE DATA FUNCS   --------
-    
     
     private func attempFetchCategory() {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()

@@ -332,11 +332,11 @@ class DepthOfFieldController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         switch pickerView {
         case self.sensorPicker:
-            attributedString = NSAttributedString(string: selectionsOfSensorPicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS])
+            attributedString = NSAttributedString(string: selectionsOfSensorPicker[row], attributes: [NSAttributedStringKey.foregroundColor : Colors.OF_CONTRAST_ITEMS])
         case self.aperturePicker:
-            attributedString = NSAttributedString(string: selectionsOfAperturePicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS])
+            attributedString = NSAttributedString(string: selectionsOfAperturePicker[row], attributes: [NSAttributedStringKey.foregroundColor : Colors.OF_CONTRAST_ITEMS])
         default:
-            attributedString = NSAttributedString(string: selectionsOfUnitPicker[row], attributes: [NSForegroundColorAttributeName : Colors.OF_CONTRAST_ITEMS])
+            attributedString = NSAttributedString(string: selectionsOfUnitPicker[row], attributes: [NSAttributedStringKey.foregroundColor : Colors.OF_CONTRAST_ITEMS])
         }
         
         return attributedString

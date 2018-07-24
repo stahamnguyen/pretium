@@ -14,6 +14,7 @@ class WeatherForecastManager {
 
     func processDataForWeatherForecastStatistic(completion: @escaping () -> ()) {
         let urlStringOfWeatherForecastStatistic = WeatherApi.BASE_URL_OF_WEATHER_FORECAST + WeatherApi.LATTITUDE + "\(Location.shared.latitude!)" + WeatherApi.LONGTITUDE_OF_OPEN_WEATHER_MAP + "\(Location.shared.longitude!)" + WeatherApi.FORECASTED_DAYS + "7" + WeatherApi.ID + WeatherApi.KEY
+//        print(urlStringOfWeatherForecastStatistic)
         let url = URL(string: urlStringOfWeatherForecastStatistic)!
         let request = URLRequest(url: url)
         
@@ -114,15 +115,15 @@ class ForecastStatistic {
         if let temperature = getData(of: .temperature, from: weatherForecastStatistic) as? [String : Any] {
             
             // Highest temperature
-            if let highestTemperatureInKelvin = getData(of: .highestTemperature, from: temperature) as? Float {
-                let highestTemperatureInCelcius = highestTemperatureInKelvin - Float(273)
-                self._highestTemperature = String(format: "%.0f", floorf(highestTemperatureInCelcius))
+            if let highestTemperatureInKelvin = getData(of: .highestTemperature, from: temperature) as? Double {
+                let highestTemperatureInCelcius = highestTemperatureInKelvin - Double(273)
+                self._highestTemperature = String(format: "%.0f", floor(highestTemperatureInCelcius))
             }
             
             // Lowest temperature
-            if let lowestTemperatureInKelvin = getData(of: .lowestTemperature, from: temperature) as? Float {
-                let lowestTemperatureInCelcius = lowestTemperatureInKelvin - Float(273)
-                self._lowestTemperature = String(format: "%.0f", floorf(lowestTemperatureInCelcius))
+            if let lowestTemperatureInKelvin = getData(of: .lowestTemperature, from: temperature) as? Double {
+                let lowestTemperatureInCelcius = lowestTemperatureInKelvin - Double(273)
+                self._lowestTemperature = String(format: "%.0f", floor(lowestTemperatureInCelcius))
             }
         }
     }

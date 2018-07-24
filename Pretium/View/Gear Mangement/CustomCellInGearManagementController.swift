@@ -65,7 +65,7 @@ class CustomCellInGearManagementController: UICollectionViewCell {
         
         nameLabel.frame = Create.frameScaledToIphone6Plus(x: 27.5, y: 188, width: 137, height: 21)
         nameLabel.textAlignment = .center
-        nameLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 13, forIphone6: 15, forIphone6Plus: 17), weight: UIFontWeightBold)
+        nameLabel.font = UIFont.systemFont(ofSize: AppDelegate.fontSize(forIphone5: 13, forIphone6: 15, forIphone6Plus: 17), weight: UIFont.Weight.bold)
         nameLabel.textColor = .black
         addSubview(nameLabel)
         
